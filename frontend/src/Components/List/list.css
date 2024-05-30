@@ -1,0 +1,40 @@
+.listContainer
+{
+    height: 30px;
+    width: 100%;
+    margin-top: 80px;
+}
+.listContainer ul{
+    display: flex;
+    margin-left: 10px;
+   
+}
+.listContainer ul li{
+    margin-top: 10px;
+    margin-right: 20px;
+    list-style-type: none;
+    font-size: 20px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    border-right: 1px solid red;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+.listContainer ul li a{
+    text-decoration: none;
+    color: black;
+  
+}
+.listContainer ul li a:hover{
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.069);
+    
+}
+hr{
+    margin: auto;
+    margin-top: 15px;
+    border: 1px solid red;
+    width: 90%;
+    align-items: center;
+}
