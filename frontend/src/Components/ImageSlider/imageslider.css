@@ -1,0 +1,26 @@
+.imageSliderContainer
+{
+    position: relative;
+    transition: 100% 300ms ease-in-out;
+}
+.image-slider-btn
+{
+    all: unset;
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 100ms ease-in-out;
+}
+.image-slider-btn >*
+{
+    stroke: white;
+    fill: black;
+    width: 2rem;
+    height: 2rem;
+}
+.image-slider-btn:hover{
+    background: rgb(0,0,0,.2);
+}

@@ -8,6 +8,7 @@
     justify-content: space-between;
     padding: 15px 7%;  
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: #e87065;

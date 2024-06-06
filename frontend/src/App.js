@@ -1,14 +1,11 @@
 import React from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import List from './Components/List/List'
-import Header from './Components/Header/Header'
+
+import HomePage from './pages/HomePage'
 
 const App = () => {
   return (
     <div>
-      <Navbar/>
-      <List/>
-      <Header/>
+      <HomePage/>
     </div>
   )
 }
