@@ -5,6 +5,7 @@ import Header from '../Components/Header/Header'
 import Icon from '../Components/Icon/Icon'
 import TrendingBook from '../Components/TrendingBook/TrendingBook'
 import ComboBook from '../Components/ComboBook/ComboBook'
+import BestSeller from '../Components/BestSeller/BestSeller'
 function HomePage() {
   return (
     <div className='homePage'>  
@@ -14,6 +15,7 @@ function HomePage() {
         <Icon/>
         <TrendingBook/>
         <ComboBook/>
+        <BestSeller/>
     </div>
   )
 }

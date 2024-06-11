@@ -11,10 +11,10 @@ import Komi from '../../assets/trendingbook/Komi.jpg';
 import mhac from '../../assets/trendingbook/mhac.jpg';
 import OP from '../../assets/trendingbook/OP.jpg';
 import OPM from '../../assets/trendingbook/opm.jpg';
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 function TrendingBook() {
     function SampleNextArrow(props) {
@@ -73,8 +73,8 @@ function TrendingBook() {
             img: jujustu
         },
         {   title:' Jujutsu Kaisen 2',
-          author: 'Gege Akutami',
-          img: jujustu2
+            author: 'Gege Akutami',
+            img: jujustu2
         },
         {   title:'Komi Cant Communicate (Komi-san wa, Comyushou desu)',
             author: 'Tomohito Oda',

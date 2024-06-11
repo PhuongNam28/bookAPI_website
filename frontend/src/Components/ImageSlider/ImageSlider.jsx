@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {ArrowBigLeft,ArrowBigRight} from "lucide-react"
 import './imageslider.css'
 function ImageSlider({ imageUrls }) {
-    const [imageIndex, setImageIndex] = useState(0)
+    const [imageIndex, setImageIndex] = useState(1)
     const showPreImg = () => {
       setImageIndex(index =>{
         if(index === 0){
