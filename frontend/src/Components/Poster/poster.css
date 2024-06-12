@@ -1,0 +1,51 @@
+.posterContainer {
+    width: 90%;
+    display: flex;
+    justify-content: space-between; /* Add this line to create space between items */
+   
+    height: 650px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.fiction {
+    width: 50%;
+    height: 600px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.fiction img {
+    width: 100%; /* Change to 100% to fill the parent container */
+    height: 600px;
+    padding: 0 10px; /* Add padding to create space around the image */
+}
+
+.manga {
+    width: 50%;
+    height: 600px;
+    align-items: center;
+}
+
+.manga img {
+    width: 100%; /* Change to 100% to fill the parent container */
+    height: 600px;
+    padding: 0 10px; /* Add padding to create space around the image */
+}
+.posterContainer p {
+    align-items: center;
+    font-weight: 800;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+}
+.bigPoster{
+    width: 100%;
+    height: 600px;
+    align-items: center;
+}
+.bigPoster img{
+    width: 100%;
+    height: 600px;
+    align-items: center;
+}

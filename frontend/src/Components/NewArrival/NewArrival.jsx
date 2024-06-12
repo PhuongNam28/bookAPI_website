@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import axios from 'axios'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './bestseller.css'
+import '../BestSeller/bestseller.css'
 function BestSeller() {
   const [bookData,setBookData] = useState([])
     function SampleNextArrow(props) {
@@ -37,14 +37,14 @@ function BestSeller() {
         prevArrow: <SamplePrevArrow />
       };
 
-    axios('https://www.googleapis.com/books/v1/volumes?q=bestsellers&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
+    axios('https://www.googleapis.com/books/v1/volumes?q=newarrival&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
     .then(res=>setBookData(res.data.items))
     .catch(err=>console.log(err))
 
   return (
     <div className='allBestSellerContainer'>
         <div className='bestSellerContainer'>
-            <h1>Best Seller</h1>
+            <h1>New Arrival</h1>
             <Slider {...settings}>
                 {
                   bookData.map((item)=>{

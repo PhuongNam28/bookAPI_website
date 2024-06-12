@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import axios from 'axios'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './bestseller.css'
-function BestSeller() {
+import '../BestSeller/bestseller.css'
+function AwardWinner() {
   const [bookData,setBookData] = useState([])
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -37,20 +37,21 @@ function BestSeller() {
         prevArrow: <SamplePrevArrow />
       };
 
-    axios('https://www.googleapis.com/books/v1/volumes?q=bestsellers&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
+    axios('https://www.googleapis.com/books/v1/volumes?q=awardwinner&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
     .then(res=>setBookData(res.data.items))
     .catch(err=>console.log(err))
 
   return (
     <div className='allBestSellerContainer'>
         <div className='bestSellerContainer'>
-            <h1>Best Seller</h1>
+            <h1>Award Winner</h1>
             <Slider {...settings}>
                 {
                   bookData.map((item)=>{
                     return (
                       <div key={item.id} className='bestSeller'>
                           <img className='bestSellerPic' src={item.volumeInfo.imageLinks.thumbnail} alt="No pic" />
+                         
                           <p>{item.volumeInfo.title}</p>
                           <p>{item.volumeInfo.authors}</p>
                       </div>
@@ -60,9 +61,9 @@ function BestSeller() {
             </Slider> 
         </div>
         <a className='seeAll' href="#">SEE ALL</a>
-        <hr className='hrIcon'/>
+        <hr className='hrIcon' />
     </div>
   )
 }
 
-export default BestSeller
+export default AwardWinner

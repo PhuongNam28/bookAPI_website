@@ -65,6 +65,7 @@ function ComboBook() {
                 })}     
             </Slider> 
         </div>
+        <hr className='hrIcon' style={{marginTop: "40px"}}/>
     </div>
   )    
 }

@@ -6,6 +6,12 @@ import Icon from '../Components/Icon/Icon'
 import TrendingBook from '../Components/TrendingBook/TrendingBook'
 import ComboBook from '../Components/ComboBook/ComboBook'
 import BestSeller from '../Components/BestSeller/BestSeller'
+import InternationalBestSeller from '../Components/InternationalBestSeller/InternationalbestSeller'
+import NewArrival from '../Components/NewArrival/NewArrival'
+import Poster from '../Components/Poster/Poster'
+import Poster2 from '../Components/Poster2/Poster2'
+import AwardWinner from '../Components/AwardWinner/AwardWinner'
+import Footer from '../Components/Footer/Footer'
 function HomePage() {
   return (
     <div className='homePage'>  
@@ -16,6 +22,13 @@ function HomePage() {
         <TrendingBook/>
         <ComboBook/>
         <BestSeller/>
+        <NewArrival/>
+        <Poster/>
+        <InternationalBestSeller/>
+        <Poster2/>
+        <AwardWinner/>
+        <Footer/>
+        
     </div>
   )
 }
