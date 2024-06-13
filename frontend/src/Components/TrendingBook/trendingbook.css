@@ -90,7 +90,7 @@
     font-style: italic;
 }
 .trendingBook:hover{
-    flex: 1.5;                                                           
+    transform: (0.9);                                                      
 }
 .bookTitle {
     font-family: 'Times New Roman', Times, serif;
@@ -142,4 +142,29 @@
     color: red;
     font-size: 20px;
     font-weight: bold;
+}
+.seeDetails{
+    position: absolute;
+    top: 350px;
+    right: 80px;
+    width: 90px;
+    height:30px;
+    line-height: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid red;
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+
+
+}
+.trendingBook:hover .seeDetails {
+    display: block; 
+    transform: scale(0.95);
+}
+.seeDetails:hover{
+    background-color: #ffffffc5;
+    transform: scale(0.95);
 }

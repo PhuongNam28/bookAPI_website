@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './navbar.css'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [open,setOpen] = useState(false)
@@ -27,8 +28,8 @@ const Navbar = () => {
                     <button>Log Out</button>
                 </ul>
             </div>
-            
-            <div className='userCart'>Shopping cart</div>
+           
+            <Link to="/added" className='userCart'>Shopping cart</Link>
         </div>
     </div>
   )

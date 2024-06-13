@@ -1,0 +1,29 @@
+.addedItemsContainer{
+    width: 100vw;
+    min-height: 60vh;
+    height: auto;
+    margin-top: 40px;
+    border-bottom: 1px solid #ccc ;
+}
+.cartHeader{
+    margin-bottom: 10px;
+    margin-left: 80px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+
+}
+.cartHeader h1{
+    font-style: italic;
+    font-size: 30px;
+}
+.cartContent
+{
+    margin: 0 auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    height: auto;
+    width: 90%;
+}

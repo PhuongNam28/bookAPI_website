@@ -1,0 +1,192 @@
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.overlay-inner {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    max-height: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding: 20px; 
+    opacity: 0.95;
+}
+
+.inner-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+.overlay-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    color: #333;
+    width: 40px;
+    height: 40px;
+}
+.overlay-close:hover {
+    background-color: #e0e0e08c;
+}
+
+.inner-left, .inner-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    width: 50%;
+}
+
+.inner-left .left-pic {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover; /* Ensure image covers the box */
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space out buttons and quantity number */
+    margin: 10px 0;
+}
+
+.quantityNumber {
+    border: 1px solid #333;
+    padding: 0 12px;
+    border-radius: 4px;
+    font-size: 1em; /* Increase font size for better readability */
+}
+
+.quantity button {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em; /* Increase font size for better visibility */
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.quantity button:hover {
+    background-color: #e0e0e0;
+}
+
+.addToCart {
+    border: 1px solid red;
+    padding: 10px 20px;
+    width: 150px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    color: red;
+    font-style: italic;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.addToCart:hover {
+    background-color: red;
+    color: white;
+}
+
+.inner-price {
+    display: flex;
+    justify-content: space-around;
+    width: 150px; 
+    font-size: 1.2em; 
+}
+
+.inner-right .newPrice {
+    color: red;
+    font-size: 30px;
+}
+
+.inner-right  .oldPrice {
+    color: #666;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.viewDetails {
+    margin-top: 20px; /* Adjust margin for better spacing */
+    line-height: 1.5em;
+    width: 160px;
+    height: 50px;
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.viewDetails:hover {
+    background-color: red;
+    color: white;
+}
+.inner-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    
+}
+.modalbookTitle {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.modalbookAuthor {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.modalbookDesc {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+}
