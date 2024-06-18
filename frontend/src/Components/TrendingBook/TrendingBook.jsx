@@ -70,7 +70,7 @@ function TrendingBook() {
         },
         {
             title: 'Blue Lock',
-            author: 'Muneyuki Kaneshiro (viết truyện), Yusuke Nomura (vẽ minh họa)',
+            author: 'Muneyuki Kaneshiro',
             img: Blue,
             oldPrice: 13.99,
             newPrice: 10.99,
@@ -134,7 +134,7 @@ function TrendingBook() {
         },
         {
             title: 'One Punch Man',
-            author: 'ONE (viết truyện), Yusuke Murata (vẽ minh họa)',
+            author: 'Yusuke Murata (vẽ minh họa)',
             img: OPM,
             oldPrice: 15.99,
             newPrice: 12.99,

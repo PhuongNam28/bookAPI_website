@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
-
 const Navbar = () => {
     const [open,setOpen] = useState(false)
     const handleClick = ()=>
@@ -25,6 +24,7 @@ const Navbar = () => {
                     <li>My Order</li>
                     <li>Setting</li>
                     <li>Inbox</li>
+                    <Link to="/login"><li>Login</li></Link>
                     <button>Log Out</button>
                 </ul>
             </div>

@@ -1,29 +1,129 @@
-.addedItemsContainer{
-    width: 100vw;
+.addedItemsContainer {
+    width: 100%;
     min-height: 60vh;
-    height: auto;
     margin-top: 40px;
-    border-bottom: 1px solid #ccc ;
+    border-bottom: 1px solid #ccc;
+    padding: 0 20px; /* Thêm padding cho phần container */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước chính của phần tử */
 }
-.cartHeader{
-    margin-bottom: 10px;
-    margin-left: 80px;
-    margin-top: 80px;
-    margin-bottom: 80px;
 
+.cartHeader {
+    margin-top: 40px; /* Giảm khoảng cách từ header xuống nội dung */
+    margin-bottom: 20px; /* Điều chỉnh khoảng cách bottom */
+    text-align: center; /* Căn giữa nội dung header */
 }
-.cartHeader h1{
+
+.cartHeader h1 {
     font-style: italic;
     font-size: 30px;
 }
-.cartContent
-{
+
+.cartContent {
     margin: 0 auto;
     border: 1px solid black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 400px;
-    height: auto;
-    width: 90%;
+    width: 100%; /* Sửa lại chiều rộng */
+    padding: 20px; /* Thêm padding cho phần content */
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước chính của phần tử */
 }
+
+.cartItem {
+    width: 100%;
+    height: auto; /* Sử dụng auto để co dãn theo nội dung bên trong */
+    display: flex;
+    align-items: center;
+    padding: 20px 0; /* Thêm padding top và bottom */
+    border-bottom: 1px solid #ccc; /* Đường viền giữa các item */
+}
+
+.cartImg {
+    width: 100px; 
+    height: auto; 
+    border-radius: 10px;
+    margin-right: 20px; 
+    margin-left: 20px; 
+}
+
+.cartItemInfo {
+    flex: 1; /* Cho phép nội dung co dãn đầy đủ */
+    display: flex;
+    flex-direction: column;
+}
+
+.cartBookName {
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 5px; /* Điều chỉnh khoảng cách bottom */
+}
+
+.cartAuthor {
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-style: italic;
+}
+.cartPrice{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.cartQuantity {
+    margin-top: 10px; /* Điều chỉnh khoảng cách top */
+}
+
+.cartNewPrice {
+    color: red; /* Màu đỏ cho giá mới */
+    font-size: 20px; /* Kích thước lớn hơn cho giá mới */
+    font-weight: bold; /* Đậm cho giá mới */
+    margin-right: 10px; /* Khoảng cách phía bên phải */
+}
+
+.cartOldPrice {
+    color: #999; /* Màu cho giá cũ */
+    font-size: 16px; /* Kích thước cho giá cũ */
+    text-decoration: line-through; /* Gạch ngang cho giá cũ */
+}
+/* CSS cho các nút quantity */
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity button {
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.quantity button:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity .quantityNumber {
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* CSS cho phần tổng */
+.cartTotal {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 30px;
+    color: red;
+}
+

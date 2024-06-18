@@ -1,26 +1,48 @@
 import React, { useState } from 'react';
 import './modal.css';
-import { useDispatch } from 'react-redux';
-import { addBook } from '../../Redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBook, updateQuantity } from '../../Redux/actions';
 import { v4 as uuidv4 } from 'uuid';
+import { addBookSelector } from '../../Redux/selector';
 
 function Modal({ show, item, onClose }) {
     const dispatch = useDispatch();
+    const cartBooks = useSelector(addBookSelector);
     const [quantity, setQuantity] = useState(1);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     if (!show) {
         return null;
     }
 
     const handleAddButtonClick = () => {
-        dispatch(addBook({
-            id: uuidv4(),
-            img: item.img,
-            bookName: item.title,
-            author: item.author,
-            quantity: quantity,
-            price: item.newPrice
-        }));
+        const existingBook = cartBooks.find(cartBook => cartBook.bookName === item.title);
+
+        if (existingBook) {
+            // Nếu sách đã có trong giỏ hàng, chỉ cập nhật số lượng
+            const updatedQuantity = existingBook.quantity + quantity;
+            dispatch(updateQuantity(existingBook.id, updatedQuantity));
+        } else {
+            // Nếu sách chưa có trong giỏ hàng, thêm mới vào giỏ hàng
+            dispatch(addBook({
+                id: uuidv4(),
+                img: item.img,
+                bookName: item.title,
+                author: item.author,
+                quantity: quantity,
+                newPrice: item.newPrice,
+                oldPrice: item.oldPrice,
+            }));
+        }
+
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+            setShowSuccessMessage(false);
+        }, 3000);
+
+        // Reset số lượng về 1 sau khi thêm vào giỏ hàng
+        setQuantity(1);
     }
 
     const increaseQuantity = () => {
@@ -46,6 +68,9 @@ function Modal({ show, item, onClose }) {
                             <button className='increase' onClick={increaseQuantity}>+</button>
                         </div>
                         <button className='addToCart' onClick={handleAddButtonClick}>Add To Cart</button>
+                        {showSuccessMessage && (
+                            <div className="successMessage">Added to cart successfully!</div>
+                        )}
                     </div>
 
                     <div className="inner-right">

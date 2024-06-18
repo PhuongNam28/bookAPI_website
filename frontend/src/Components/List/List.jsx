@@ -4,7 +4,7 @@ const List = () => {
   return (
     <div className='listContainer'>
         <ul>
-            <li><a href="">Book</a></li>
+            <li><a href="/">Book</a></li>
             <li><a href="">New Arrival</a></li>
             <li><a href="">Box Sets</a></li>
             <li><a href="">Best Seller</a></li>
