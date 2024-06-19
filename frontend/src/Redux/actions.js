@@ -21,3 +21,8 @@ export const updateQuantity = (id, quantity) => {
         payload: { id, quantity }
     }
 }
+
+export const removeBook = (id) => ({
+  type: 'BOOK/REMOVE_BOOK',
+  payload: id
+});

@@ -21,6 +21,8 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
                 }
                 return book;
             });
+        case 'BOOK/REMOVE_BOOK':
+            return state.filter(book => book.id !== action.payload);
         default:
             return state;
     }

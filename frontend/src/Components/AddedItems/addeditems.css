@@ -20,7 +20,8 @@
 
 .cartContent {
     margin: 0 auto;
-    border: 1px solid black;
+    margin-bottom: 50px;
+    border: 1px solid #E0E0E0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,7 +42,7 @@
 }
 
 .cartImg {
-    width: 100px; 
+    width: 150px; 
     height: auto; 
     border-radius: 10px;
     margin-right: 20px; 
@@ -49,9 +50,11 @@
 }
 
 .cartItemInfo {
-    flex: 1; /* Cho phép nội dung co dãn đầy đủ */
+    flex: 1; 
     display: flex;
     flex-direction: column;
+    padding-left: 30px;
+    justify-content: space-around;
 }
 
 .cartBookName {
@@ -125,5 +128,65 @@
     text-align: right;
     padding-right: 30px;
     color: red;
+    display: flex;
+    justify-content: right;
+  
+}
+.total{
+    margin-right: 40px ;
+    line-height: 40px;
+}
+.buyButton
+{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 150px;
+    margin-left: 10px;
+}
+.buyButton:hover{
+    background-color: rgb(255, 102, 102);
+}
+.cartLeft
+{
+    width: 70%;
+    display: flex;
 }
 
+.whislistButton,
+.removeButton {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 150px;
+  margin-left: 10px;
+}
+
+.whislistButton:hover,
+.removeButton:hover {
+  background-color: #0056b3;
+}
+
+.removeButton {
+  background-color: #dc3545;
+}
+
+.removeButton:hover {
+  background-color: #c82333;
+}

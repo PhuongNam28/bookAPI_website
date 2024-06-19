@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
+import { auth } from '../../lib/firebase'
 const Navbar = () => {
     const [open,setOpen] = useState(false)
     const handleClick = ()=>
@@ -25,7 +26,7 @@ const Navbar = () => {
                     <li>Setting</li>
                     <li>Inbox</li>
                     <Link to="/login"><li>Login</li></Link>
-                    <button>Log Out</button>
+                    <button onClick={()=> auth.signOut()}>Log Out</button>
                 </ul>
             </div>
            

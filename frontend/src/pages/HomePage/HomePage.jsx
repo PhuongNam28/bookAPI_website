@@ -22,7 +22,7 @@ function HomePage() {
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
-      fetchUserInfo(user ? user.uid : null)
+      fetchUserInfo(user?.uid)
     })
     return () => {
       unSub()
