@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './shippinginfo.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBookSelector } from '../../Redux/selector';
 import { Link } from 'react-router-dom';
+import { setShippingInfo } from '../../Redux/actions';
 
 function ShippingInfo() {
+    const dispatch = useDispatch();
     const cartBooks = useSelector(addBookSelector);
+
+    // State để lưu trữ thông tin vận chuyển
+    const [shippingDetails, setShippingDetails] = useState({
+        recipientName: '',
+        companyName: '',
+        streetAddress: '',
+        landmark: '',
+        country: 'VietNam',
+        cityName: '',
+        zipCode: '',
+        mobile: '',
+        phone: ''
+    });
 
     // Tính tổng số lượng và tổng giá tiền
     const totalQuantity = cartBooks.reduce((acc, book) => acc + book.quantity, 0);
     const subTotal = cartBooks.reduce((acc, book) => acc + book.quantity * book.newPrice, 0);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setShippingDetails({
+            ...shippingDetails,
+            [name]: value
+        });
+    };
+
+    const handleSaveAndContinue = () => {
+        dispatch(setShippingInfo(shippingDetails));
+    };
 
     return (
         <div className='shippingInfoContainer'>
@@ -22,20 +49,21 @@ function ShippingInfo() {
                     <div className="shippingInfoAddress">
                         <div className="shippingInfoOldAddress">The shipping address will be saved to your account to help <br /> you a faster checkout with your next orders.</div>
                         <div className="shippingInfoDetails">
-                            Receipient Name: <input type="text" required />
-                            Company Name: <input type="text" />
-                            Street Address: <textarea name="" id="" cols='5' rows='5' ></textarea>Please provide the Address at which you would be available between 9 AM – 6 PM as our Courier partners deliver between this time <br />
-                            LandMark: <input type="text" />
-                            Country: <select name="" id="">
-                                <option value="">VietNam</option>
-                                <option value="">ThaiLan</option>
-                                <option value="">Lao</option>
+                            Receipient Name: <input type="text" name="recipientName" value={shippingDetails.recipientName} onChange={handleInputChange} />
+                            Company Name: <input type="text" name="companyName" value={shippingDetails.companyName} onChange={handleInputChange} />
+                            Street Address: <textarea name="streetAddress" value={shippingDetails.streetAddress} onChange={handleInputChange} cols='5' rows='5' ></textarea>
+                            Please provide the Address at which you would be available between 9 AM – 6 PM as our Courier partners deliver between this time <br />
+                            LandMark: <input type="text" name="landmark" value={shippingDetails.landmark} onChange={handleInputChange} />
+                            Country: <select name="country" value={shippingDetails.country} onChange={handleInputChange}>
+                                <option value="VietNam">VietNam</option>
+                                <option value="ThaiLan">ThaiLan</option>
+                                <option value="Lao">Lao</option>
                             </select>
-                            City Name: <input type="text" />
-                            Pin/Zip Code: <input type="text" />
-                            Mobile: <input type="text" />
-                            Phone: <input type="text" />
-                            <button><Link to='/confirm'>Save & Continue</Link></button>
+                            City Name: <input type="text" name="cityName" value={shippingDetails.cityName} onChange={handleInputChange} />
+                            Pin/Zip Code: <input type="text" name="zipCode" value={shippingDetails.zipCode} onChange={handleInputChange} />
+                            Mobile: <input type="text" name="mobile" value={shippingDetails.mobile} onChange={handleInputChange} />
+                            Phone: <input type="text" name="phone" value={shippingDetails.phone} onChange={handleInputChange} />
+                            <Link to='/confirm'><button onClick={handleSaveAndContinue}>Save & Continue</button></Link>
                         </div>
                     </div>
                 </div>
@@ -51,7 +79,7 @@ function ShippingInfo() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ShippingInfo;

@@ -16,6 +16,7 @@ function Modal({ show, item, onClose }) {
     }
 
     const handleAddButtonClick = () => {
+        console.log(cartBooks)
         const existingBook = cartBooks.find(cartBook => cartBook.bookName === item.title);
 
         if (existingBook) {

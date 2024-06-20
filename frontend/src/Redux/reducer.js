@@ -3,15 +3,18 @@ import { combineReducers } from 'redux';
 const initState = {
     addedBooks: []
 }
+const shippingInitState = 
+{
+    shippingInfo: {}
+}
 
 // Reducer cho addedBooks trong giỏ hàng
 const addedBooksReducer = (state = initState.addedBooks, action) => {
     switch(action.type) {
         case 'BOOK/ADD_BOOK':
-            // Thêm sách vào giỏ hàng
             return [...state, action.payload];
         case 'BOOK/UPDATE_QUANTITY':
-            // Cập nhật số lượng của sách trong giỏ hàng
+            
             return state.map(book => {
                 if (book.id === action.payload.id) {
                     return {
@@ -28,9 +31,22 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
     }
 }
 
-// Reducer gốc kết hợp các reducers con
+const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
+    switch(action.type) {
+        case 'ADD_SHIPPING_INFO':
+            return {
+                ...state,
+                shippingInfo: action.payload
+            };
+        default:
+            return state;
+    }
+};
+
+
 const rootReducer = combineReducers({
     addedBooks: addedBooksReducer,
+    shippings: shippingReducer
 });
 
 export default rootReducer;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import axios from 'axios'
 import "slick-carousel/slick/slick.css";
@@ -36,15 +36,16 @@ function InternationalBestSeller() {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
       };
-
-    axios('https://www.googleapis.com/books/v1/volumes?q=internationalbestseller&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
-    .then(res=>setBookData(res.data.items))
-    .catch(err=>console.log(err))
+      useEffect(()=>{
+        axios('https://www.googleapis.com/books/v1/volumes?q=internationalbestseller&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
+        .then(res=>setBookData(res.data.items))
+        .catch(err=>console.log(err))
+      },[])
 
   return (
     <div className='allBestSellerContainer'>
         <div className='bestSellerContainer'>
-            <h1>New Arrival</h1>
+            <h1>International BestSeller</h1>
             <Slider {...settings}>
                 {
                   bookData.map((item)=>{
