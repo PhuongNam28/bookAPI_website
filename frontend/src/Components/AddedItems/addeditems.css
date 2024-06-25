@@ -3,14 +3,14 @@
     min-height: 60vh;
     margin-top: 40px;
     border-bottom: 1px solid #ccc;
-    padding: 0 20px; /* Thêm padding cho phần container */
-    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước chính của phần tử */
+    padding: 0 20px; 
+    box-sizing: border-box; 
 }
 
 .cartHeader {
-    margin-top: 40px; /* Giảm khoảng cách từ header xuống nội dung */
-    margin-bottom: 20px; /* Điều chỉnh khoảng cách bottom */
-    text-align: center; /* Căn giữa nội dung header */
+    margin-top: 40px;
+    margin-bottom: 20px; 
+    text-align: center; 
 }
 
 .cartHeader h1 {
@@ -27,18 +27,18 @@
     justify-content: center;
     align-items: center;
     min-height: 400px;
-    width: 100%; /* Sửa lại chiều rộng */
-    padding: 20px; /* Thêm padding cho phần content */
-    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước chính của phần tử */
+    width: 80%;
+    padding: 20px; 
+    box-sizing: border-box;
 }
-
 .cartItem {
     width: 100%;
-    height: auto; /* Sử dụng auto để co dãn theo nội dung bên trong */
+    height: auto; 
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Thêm padding top và bottom */
-    border-bottom: 1px solid #ccc; /* Đường viền giữa các item */
+    padding: 20px 0; 
+    border-bottom: 1px solid #ccc; 
 }
 
 .cartImg {
@@ -62,7 +62,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 25px;
     font-weight: 800;
-    margin-bottom: 5px; /* Điều chỉnh khoảng cách bottom */
+    margin-bottom: 5px; 
 }
 
 .cartAuthor {
@@ -78,20 +78,20 @@
 }
 
 .cartQuantity {
-    margin-top: 10px; /* Điều chỉnh khoảng cách top */
+    margin-top: 10px;
 }
 
 .cartNewPrice {
-    color: red; /* Màu đỏ cho giá mới */
-    font-size: 20px; /* Kích thước lớn hơn cho giá mới */
-    font-weight: bold; /* Đậm cho giá mới */
-    margin-right: 10px; /* Khoảng cách phía bên phải */
+    color: red; 
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-right: 10px; 
 }
 
 .cartOldPrice {
-    color: #999; /* Màu cho giá cũ */
-    font-size: 16px; /* Kích thước cho giá cũ */
-    text-decoration: line-through; /* Gạch ngang cho giá cũ */
+    color: #999; 
+    font-size: 16px; 
+    text-decoration: line-through;
 }
 /* CSS cho các nút quantity */
 .quantity {
@@ -130,11 +130,13 @@
     color: red;
     display: flex;
     justify-content: right;
+    width: 100%;
   
 }
 .total{
     margin-right: 40px ;
     line-height: 40px;
+    text-align: right;
 }
 .buyButton
 {
@@ -146,13 +148,15 @@
     border: none;
     border-radius: 10px;
     color: white;
-    padding: 10px;
+    padding: 10px 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
     text-align: center;
     width: 150px;
     margin-left: 10px;
+    text-decoration: none;
+    font-size: 14px;
 }
 .buyButton:hover{
     background-color: rgb(255, 102, 102);

@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className='headerContainer'>
       <div className="firstImg">
-          <img src="https://wallpapers.com/images/hd/one-punch-man-season-2-3142-x-1200-wallpaper-88zq29ixshe4j1cu.jpg" alt="" />
+          <img src="https://i.pinimg.com/originals/bb/eb/2e/bbeb2eb19cc25ae4a9fe214dc6044d39.png" alt="" />
       </div>
       {/* 
        <div className="secondImg">

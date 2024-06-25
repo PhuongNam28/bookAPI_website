@@ -4,27 +4,35 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBook, updateQuantity } from '../../Redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 import { addBookSelector } from '../../Redux/selector';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function Modal({ show, item, onClose }) {
     const dispatch = useDispatch();
     const cartBooks = useSelector(addBookSelector);
     const [quantity, setQuantity] = useState(1);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const navigate = useNavigate();
 
     if (!show) {
         return null;
     }
 
-    const handleAddButtonClick = () => {
-        console.log(cartBooks)
-        const existingBook = cartBooks.find(cartBook => cartBook.bookName === item.title);
+    const handleDetails = () => {
+        navigate('/details', { state: { book: item } });
+    }
 
+    const handleAddButtonClick = () => {
+        const existingBook = cartBooks.find(cartBook => cartBook.bookName === item.title);
         if (existingBook) {
-            // Nếu sách đã có trong giỏ hàng, chỉ cập nhật số lượng
             const updatedQuantity = existingBook.quantity + quantity;
             dispatch(updateQuantity(existingBook.id, updatedQuantity));
+            Swal.fire({
+                title: "SUCCESS",
+                text: "You have this book in your cart already! We will increase the quantity for you",
+                icon: "success"
+            });
         } else {
-            // Nếu sách chưa có trong giỏ hàng, thêm mới vào giỏ hàng
             dispatch(addBook({
                 id: uuidv4(),
                 img: item.img,
@@ -34,15 +42,17 @@ function Modal({ show, item, onClose }) {
                 newPrice: item.newPrice,
                 oldPrice: item.oldPrice,
             }));
+            Swal.fire({
+                title: "SUCCESS",
+                text: "You have added the book into your cart!",
+                icon: "success"
+            });
         }
-
         setShowSuccessMessage(true);
-
         setTimeout(() => {
             setShowSuccessMessage(false);
         }, 3000);
 
-        // Reset số lượng về 1 sau khi thêm vào giỏ hàng
         setQuantity(1);
     }
 
@@ -85,7 +95,7 @@ function Modal({ show, item, onClose }) {
                             <h4 className='modalbookDesc'>{item.description}</h4>
                         </div>
 
-                        <button className='viewDetails'>View Product Details</button>
+                        <button className='viewDetails' onClick={handleDetails}>View Product Details</button>
                     </div>
                 </div>
             </div>

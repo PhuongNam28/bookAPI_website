@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addBookSelector } from '../../Redux/selector';
 import { removeBook } from '../../Redux/actions';
+import Swal from 'sweetalert2'
 
 function AddedItems() {
     const dispatch = useDispatch();
@@ -47,9 +48,27 @@ function AddedItems() {
         }
     }
 
-    // Hàm xóa sản phẩm khỏi giỏ hàng
-    const handleRemove = (id) => {
-        dispatch(removeBook(id));
+    const handleRemove = async (id) => {
+      
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        });
+      
+        if (result.isConfirmed) {
+          await Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+      
+          dispatch(removeBook(id));
+        }
     }
 
     return (
@@ -92,7 +111,7 @@ function AddedItems() {
                 )}
                 <div className="cartTotal">
                     <div className='total'>Total: ${total.toFixed(2)}</div>
-                    <button className='buyButton'><Link to="/shippinginfo">Buy Now</Link></button>
+                    <Link to="/shippinginfo" className='buyButton'>Buy Now</Link>
                 </div>
             </div>
         </div>
