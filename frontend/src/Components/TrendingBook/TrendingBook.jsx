@@ -14,11 +14,13 @@ import OPM from '../../assets/trendingbook/opm.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Modal from '../Modal/Modal'
+import Modal from '../Modal/Modal';
+import { v4 as uuidv4 } from 'uuid';
 
 function TrendingBook() {
     const [show, setShow] = useState(false);
     const [item, setItem] = useState();
+    
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
         return (
@@ -53,6 +55,7 @@ function TrendingBook() {
 
     const trendingBooks = [
         {
+            id: uuidv4(),
             title: 'Attack on Titan (Shingeki no Kyojin)',
             author: 'Hajime Isayama',
             img: AOT,
@@ -61,6 +64,7 @@ function TrendingBook() {
             description: 'In a post-apocalyptic world, humanity fights for survival against giant humanoid Titans that devour humans.'
         },
         {
+            id: uuidv4(),
             title: 'Berserk',
             author: 'Kentaro Miura',
             img: beserk,
@@ -69,6 +73,7 @@ function TrendingBook() {
             description: 'Follow the dark and brutal journey of Guts, a lone mercenary, as he battles demonic forces and seeks vengeance.'
         },
         {
+            id: uuidv4(),
             title: 'Blue Lock',
             author: 'Muneyuki Kaneshiro',
             img: Blue,
@@ -77,6 +82,7 @@ function TrendingBook() {
             description: 'In an intense football training program, players compete to become the best striker in Japan.'
         },
         {
+            id: uuidv4(),
             title: 'Chainsaw Man',
             author: 'Tatsuki Fujimoto',
             img: chain,
@@ -85,6 +91,7 @@ function TrendingBook() {
             description: 'A young man merges with his pet devil to become Chainsaw Man, fighting against devils and monsters.'
         },
         {
+            id: uuidv4(),
             title: 'Dragon Ball',
             author: 'Akira Toriyama',
             img: drb,
@@ -93,6 +100,7 @@ function TrendingBook() {
             description: 'Join Goku and his friends on their adventures as they defend Earth from powerful foes and seek the Dragon Balls.'
         },
         {
+            id: uuidv4(),
             title: 'Jujutsu Kaisen',
             author: 'Gege Akutami',
             img: jujustu,
@@ -101,6 +109,7 @@ function TrendingBook() {
             description: 'A high school student joins a secret organization of sorcerers to fight against malevolent curses and save humanity.'
         },
         {
+            id: uuidv4(),
             title: 'Jujutsu Kaisen 2',
             author: 'Gege Akutami',
             img: jujustu2,
@@ -109,6 +118,7 @@ function TrendingBook() {
             description: 'The thrilling continuation of Jujutsu Kaisen, with more intense battles and deeper character development.'
         },
         {
+            id: uuidv4(),
             title: 'Komi Cant Communicate (Komi-san wa, Comyushou desu)',
             author: 'Tomohito Oda',
             img: Komi,
@@ -117,6 +127,7 @@ function TrendingBook() {
             description: 'Komi struggles with extreme social anxiety but is determined to make 100 friends in high school.'
         },
         {
+            id: uuidv4(),
             title: 'My Hero Academia (Boku no Hero Academia)',
             author: 'Kohei Horikoshi',
             img: mhac,
@@ -125,6 +136,7 @@ function TrendingBook() {
             description: 'In a world where nearly everyone has superpowers, a boy without them dreams of becoming the greatest hero.'
         },
         {
+            id: uuidv4(),
             title: 'One Piece',
             author: 'Eiichiro Oda',
             img: OP,
@@ -133,6 +145,7 @@ function TrendingBook() {
             description: 'Join Monkey D. Luffy and his pirate crew as they search for the ultimate treasure, the One Piece.'
         },
         {
+            id: uuidv4(),
             title: 'One Punch Man',
             author: 'Yusuke Murata (vẽ minh họa)',
             img: OPM,
@@ -155,7 +168,7 @@ function TrendingBook() {
                     {trendingBooks.map((book) => {
                         const discount = calculateDiscount(book.oldPrice, book.newPrice);
                         return (
-                            <div key={book.title} className='trendingBook'>
+                            <div key={book.id} className='trendingBook'>
                                 <img className='trendingbookPic' src={book.img} alt={book.title} />
                                 <div className="sale-off">{discount}%</div>
                                 <button className='seeDetails' onClick={()=>{setShow(true);setItem(book)}}>See details</button>
@@ -172,7 +185,7 @@ function TrendingBook() {
             </div>
             <a className='seeAll' href="#">SEE ALL</a>
             <hr className='hrIcon' />
-            <Modal show={show} item={item} onClose = {()=>setShow(false)}/>
+            <Modal show={show} item={item} onClose={() => setShow(false)} />
         </div>
     );
 }

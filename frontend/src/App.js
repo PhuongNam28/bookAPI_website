@@ -11,6 +11,7 @@ import ShippingInfoPage from './pages/ShippingInfoPage/ShippingInfoPage';
 import ConfirmPage from './pages/ConfirmPage/ConfirmPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/added" element={<AddedPage/>} />
         <Route path="/shippinginfo" element={<ShippingInfoPage/>} />
         <Route path="/confirm" element={<ConfirmPage/>} />
+        <Route path="/details" element={<BookDetailsPage />} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/register" element={<RegisterPage/>} />
       </Routes>
