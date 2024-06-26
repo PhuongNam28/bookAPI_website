@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import axios from 'axios'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './bestseller.css'
+import './bestseller.scss'
 function BestSeller() {
   const [bookData,setBookData] = useState([])
     function SampleNextArrow(props) {

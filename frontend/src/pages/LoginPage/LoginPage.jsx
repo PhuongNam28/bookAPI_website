@@ -1,50 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import './loginpage.css';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../../lib/firebase';
-import HomePage from "../HomePage/HomePage";
-import Notification from '../../Components/Notification/Notification';
 import { toast } from 'react-toastify';
+import useAuthentication from '../../Hooks/useAuthentication'
+import HomePage from '../HomePage/HomePage';
+import Notification from '../../Components/Notification/Notification';
 
 function LoginPage() {
-  const [gmail, setGmail] = useState('');
-  const [email, setEmail] = useState('');
-  const navigate = useNavigate();
+  const {
+    user,
+    error,
+    signInWithEmailPassword,
+    signInWithGoogle,
+    signOut
+  } = useAuthentication();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const { email, password } = Object.fromEntries(formData);
-    try {
-      await signInWithEmailAndPassword(auth, email, password)
+    const success = await signInWithEmailPassword(email, password);
+    if (success) {
+      toast.success("Login successful!");
+    } else {
+      toast.error("Hey! Wrong password or username! Please log in again");
 
-      // setEmail(localStorage.getItem('email'));
-      toast.success("OK")
-      navigate('/');
-      // console.log(email)
-
-      // window.location('/')
-    } catch (err) {
-      toast.error("Hey! Wrong password or username! Please log in again")
     }
   };
 
   const handleClick = async () => {
-    signInWithPopup(auth, provider)
-      .then((data) => {
-      setGmail(data.user.email);
-      localStorage.setItem('gmail', data.user.email);
-    });
+    const success = await signInWithGoogle();
+    if (success) {
+      toast.success("Google login successful!");
+      
+    } else {
+      toast.error("Google login failed! Please try again.");
+    
+    }
   };
-
-  useEffect(() => {
-    setGmail(localStorage.getItem('gmail'));
-  }, []);
 
   return (
     <>
-      {gmail || email ? (
+      {user ? (
         <HomePage />
       ) : (
         <div className="loginContainer">
@@ -67,10 +63,8 @@ function LoginPage() {
             </div>
           </form>
           <Notification/>
-        </div> 
+        </div>
       )}
-     
-      
     </>
   );
 }

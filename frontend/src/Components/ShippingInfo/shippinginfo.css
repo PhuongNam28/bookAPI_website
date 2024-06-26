@@ -66,22 +66,21 @@
     display: block;
     width: 100%;
     margin-bottom: 20px;
-    padding: 10px; /* Tăng padding */
-    color: #333; /* Màu chữ */
+    padding: 10px; 
+    color: #333; 
     font-weight: 400;
-    border: 1px solid #ccc; /* Viền nhẹ */
-    border-radius: 4px; /* Bo tròn */
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
     box-sizing: border-box;
 }
 
 .shippingInfoDetails input:focus,
 .shippingInfoDetails textarea:focus,
 .shippingInfoDetails select:focus {
-    border-color: #66afe9; /* Màu viền khi focus */
-    outline: none; /* Xóa outline mặc định */
-    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5); /* Thêm bóng */
+    border-color: #66afe9;
+    outline: none; 
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5); 
 }
-
 .shippingInfoDetails textarea {
     resize: none;
 }
@@ -89,16 +88,16 @@
 .shippingInfoDetails button {
     width: auto;
     padding: 10px 20px;
-    background-color: #5cb85c; /* Nền xanh lá */
-    color: white; /* Chữ trắng */
+    background-color: #5cb85c; 
+    color: white; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .shippingInfoDetails button:hover {
-    background-color: #4cae4c; /* Đổi màu khi hover */
-}
+    background-color: #4cae4c;
+ }
 
 .shippingInfoRight {
     width: 20%;

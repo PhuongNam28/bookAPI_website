@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './navbar.css';
+import './navbar.scss';
 import { Link } from 'react-router-dom';
 import { auth } from '../../lib/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

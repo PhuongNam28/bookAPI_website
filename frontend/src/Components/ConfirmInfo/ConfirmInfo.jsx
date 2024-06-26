@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './confirminfo.css';
+import './confirminfo.scss';
 import { useSelector } from 'react-redux';
 import { addBookSelector,addConfirmSelector } from '../../Redux/selector';
 import firebase, {auth} from '../../lib/firebase'
@@ -88,7 +88,7 @@ function ConfirmInfo() {
                                 <input type="text"  />
                                 <button id='captcha'>Get OTP</button>
 
-                                <input type="text" />
+                                <input type="text"/>
                                 <button id='captcha'>Verify OTP</button>
                             </div>
                             <div className="captcha">CaptCha</div>
