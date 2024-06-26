@@ -1,5 +1,5 @@
 import React from 'react'
-import './list.css'
+import './list.scss'
 const List = () => {
   return (
     <div className='listContainer'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './icon.css';
+import './icon.scss';
 import bestseller from '../../assets/bestseller.jpg';
 import winner from '../../assets/winner.jpg';
 import inter from '../../assets/inter.jpg';

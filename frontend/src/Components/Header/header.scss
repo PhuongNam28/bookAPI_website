@@ -1,37 +1,41 @@
-.headerContainer
-{
+.headerContainer {
     height: 700px;
     width: 100%;
     margin-top: 30px;
 }
-.firstImg img{
-    width: 100%;
-    height: 200px;
-}
-.firstImg{
+
+.firstImg {
     width: 100%;
     height: 200px;
     object-fit: cover;
-}
-.secondImg img{
-    width: 100%;
-    height: 500px;
 
+    img {
+        width: 100%;
+        height: 200px;
+    }
 }
-.secondImg{
+
+.secondImg {
     width: 100%;
     height: 500px;
     object-fit: cover;
     position: relative;
+
+    img {
+        width: 100%;
+        height: 500px;
+    }
 }
-hr{
+
+hr {
     margin: auto;
     margin-top: 15px;
     border: 1px solid red;
     width: 90%;
     align-items: center;
 }
-.hrHeader{
+
+.hrHeader {
     border-color: black;
     width: 50%;
 }

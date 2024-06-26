@@ -1,0 +1,141 @@
+.book-details {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+
+    .breadcrumb {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        color: #888;
+    }
+
+    .book-details-main {
+        display: flex;
+        justify-content: space-between;
+
+        .book-details-img-container {
+            position: relative;
+            max-width: 300px;
+
+            .book-details-img {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+
+            .book-details-discount {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: red;
+                color: white;
+                padding: 5px;
+                font-weight: bold;
+                border-radius: 50%;
+            }
+        }
+
+        .book-details-info {
+            flex: 1;
+            padding-left: 20px;
+
+            .book-details-title {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .book-details-authors {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .book-details-rating {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .book-details-pricing {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+
+                .book-details-newPrice {
+                    color: green;
+                    font-weight: bold;
+                    margin-right: 10px;
+                }
+
+                .book-details-oldPrice {
+                    text-decoration: line-through;
+                    margin-right: 10px;
+                }
+
+                .book-details-save {
+                    color: red;
+                }
+            }
+
+            .book-details-availability {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .book-details-description {
+                margin: 20px 0;
+                font-size: 1rem;
+                color: #555;
+            }
+
+            .book-details-isbn {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .book-details-actions {
+                text-align: right;
+                margin-top: 20px;
+            }
+
+            .quantity {
+                margin-bottom: 20px;
+
+                label {
+                    margin-right: 10px;
+                }
+
+                select {
+                    padding: 5px;
+                }
+            }
+
+            .add-to-cart,
+            .buy-now,
+            .add-to-wishlist {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                font-size: 1rem;
+                border: none;
+                cursor: pointer;
+            }
+
+            .add-to-cart {
+                background: green;
+                color: white;
+            }
+
+            .buy-now {
+                background: orange;
+                color: white;
+            }
+
+            .add-to-wishlist {
+                background: white;
+                color: black;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+}

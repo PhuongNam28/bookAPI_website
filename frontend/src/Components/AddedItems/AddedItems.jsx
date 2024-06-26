@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './addeditems.css';
+import './addeditems.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addBookSelector } from '../../Redux/selector';
 import { removeBook } from '../../Redux/actions';
 import Swal from 'sweetalert2'
+import ToastDelete from '../ToastDelete/ToastDelte';
 
 function AddedItems() {
     const dispatch = useDispatch();
     const cartBooks = useSelector(addBookSelector);
-
     // State để lưu trữ số lượng của từng sản phẩm trong giỏ hàng
     const [quantities, setQuantities] = useState(
         cartBooks.map(cartBook => cartBook.quantity) // Khởi tạo số lượng từ danh sách sản phẩm hiện có
@@ -20,11 +20,9 @@ function AddedItems() {
 
     // Hàm tính tổng số tiền
     const calculateTotal = () => {
-        let totalPrice = 0;
-        cartBooks.forEach((cartBook, index) => {
-            totalPrice += cartBook.newPrice * quantities[index];
-        });
-        return totalPrice;
+        return cartBooks.reduce((totalPrice, cartBook, index) => {
+            return totalPrice + (cartBook.newPrice * quantities[index]);
+        }, 0);
     }
 
     // Effect để cập nhật tổng khi số lượng hoặc danh sách sản phẩm thay đổi
@@ -48,27 +46,9 @@ function AddedItems() {
         }
     }
 
+    // Hàm xóa sản phẩm khỏi giỏ hàng
     const handleRemove = async (id) => {
-      
-        const result = await Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
-        });
-      
-        if (result.isConfirmed) {
-          await Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
-      
           dispatch(removeBook(id));
-        }
     }
 
     return (
@@ -104,7 +84,7 @@ function AddedItems() {
                             </div>
                             <div className="cartRight">
                                 <button className='whislistButton'>Move to Whislist</button>
-                                <button className='removeButton' onClick={() => handleRemove(cartBook.id)}>Remove</button>
+                                 <ToastDelete onConfirm={() => handleRemove(cartBook.id)} />
                             </div>
                         </div>
                     ))
