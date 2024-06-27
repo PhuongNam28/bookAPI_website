@@ -7,6 +7,10 @@ const shippingInitState =
 {
     shippingInfo: {}
 }
+const user = 
+{
+    currentUser: null
+}
 
 // Reducer cho addedBooks trong giỏ hàng
 const addedBooksReducer = (state = initState.addedBooks, action) => {
@@ -43,10 +47,28 @@ const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
     }
 };
 
+const userReducer = (state = user.currentUser, action) => {
+    switch(action.type) {
+        case 'LOG_IN':
+            return {
+                ...state,
+                currentUser: action.payload
+            };
+        case 'LOG_OUT':
+            return {
+                ...state,
+                currentUser: null,
+            };
+        default:
+            return state;
+    }
+};
+
 
 const rootReducer = combineReducers({
     addedBooks: addedBooksReducer,
-    shippings: shippingReducer
+    shippings: shippingReducer,
+    users: userReducer,
 });
 
 export default rootReducer;

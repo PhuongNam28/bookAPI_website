@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../lib/firebase';
 
 const useAuthentication = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const signInWithEmailPassword = async (email, password) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
-      return true; 
-    } catch (err) {
-      setError(err.message);
-      return false; 
-    }
-  };
-
+  
+ 
   const signInWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
@@ -52,7 +45,7 @@ const useAuthentication = () => {
   return {
     user,
     error,
-    signInWithEmailPassword,
+    signInWithEmailAndPassword,
     signInWithGoogle,
     signOut
   };

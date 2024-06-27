@@ -18,23 +18,9 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useUserStore } from '../../lib/userStore'
 
 function HomePage() {
-  const { currentUser, isLoading, fetchUserInfo } = useUserStore()
-
-  useEffect(() => {
-    const unSub = onAuthStateChanged(auth, (user) => {
-      fetchUserInfo(user?.uid)
-    })
-    return () => {
-      unSub()
-    }
-  }, [fetchUserInfo])
-
-  console.log(currentUser)
-
-  if (isLoading) return <div className='loading'>Loading...</div>
   return (
     <div className='homePage'>
-      {currentUser ? (<>
+     
         <Navbar />
         <List />
         <Header />
@@ -48,7 +34,6 @@ function HomePage() {
         <Poster2 />
         <AwardWinner />
         <Footer />
-      </>) : <LoginPage />}
     </div>
   )
 }
