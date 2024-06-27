@@ -10,3 +10,9 @@ body {
   position: relative;
   height: auto;
 }
+:root{
+  --navbar-color: #E42B26;
+  --remove-button: #E42B26;
+  --old-price: grey;
+  --new-price: red;
+}

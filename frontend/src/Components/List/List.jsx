@@ -1,5 +1,6 @@
-import React from 'react'
-import './list.css'
+import React from 'react';
+import './list.scss';
+
 const List = () => {
   return (
     <div className='listContainer'>
@@ -19,4 +20,4 @@ const List = () => {
   )
 }
 
-export default List
+export default List;
