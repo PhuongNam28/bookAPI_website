@@ -207,3 +207,29 @@ $hover-blue-color: #0056b3;
         background-color: $button-hover-color;
     }
 }
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    .decrease,
+    .increase {
+        background-color: $cart-bg-color;
+        border: none;
+        cursor: pointer;
+        padding: 8px 12px;
+        font-size: 16px;
+        color: #333;
+        transition: $cart-transition;
+
+        &:hover {
+            background-color: $background-hover-color;
+        }
+    }
+
+    .quantityNumber {
+        margin: 0 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './trendingbook.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Modal from '../Modal/Modal';
+import Modal from '../Modal/index';
 import Slider from "react-slick";
 import trendingBooks from "../../Data/data.js"
 

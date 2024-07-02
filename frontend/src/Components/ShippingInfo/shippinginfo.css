@@ -65,7 +65,7 @@
 .shippingInfoDetails button {
     display: block;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding: 10px; 
     color: #333; 
     font-weight: 400;
@@ -130,3 +130,13 @@
     border: 0;
     border-top: 1px solid #eee; 
 }
+.error {
+    border: 1px solid red;
+  }
+  
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  

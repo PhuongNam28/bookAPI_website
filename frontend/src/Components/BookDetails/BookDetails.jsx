@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import './bookdetails.scss';
 import Breadcrumb from '../DetailsComponent/BreadScrump/BreadScrump';
 import BookImage from '../DetailsComponent/BookImage/BookImage';
 import BookInfo from '../DetailsComponent/BookInfo/BookInfo';

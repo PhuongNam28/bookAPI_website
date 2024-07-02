@@ -1,10 +1,10 @@
 // toastAdded.js
 import Swal from 'sweetalert2';
 
-export function showAlreadyToast() {
+export function showAlreadyToast(props) {
   Swal.fire({
-    title: "SUCCESS",
-    text: "You have added the book into your cart!",
-    icon: "success"
+    title: props.title || "SUCCESS",
+    text: props.text || "Product Increased",
+    icon: props.icon || "success"
   });
 }

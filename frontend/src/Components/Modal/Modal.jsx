@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import './modal.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook, updateQuantity } from '../../Redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 import { addBookSelector } from '../../Redux/selector';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { showToast } from '../ToastAdded/ToastNewAdded';
 import { showAlreadyToast } from '../ToastAdded/ToastAlreadyAdded';
@@ -23,7 +21,11 @@ function Modal({ show, item, onClose }) {
         if (existingBook) {
             const updatedQuantity = existingBook.quantity + quantity;
             dispatch(updateQuantity(existingBook.id, updatedQuantity));
-            showToast()
+            showToast({
+                title: "SUCCESS",
+                text:  "you have successfully added the book into your cart!!!",
+                icon:  "success"
+            })
         } else {
             dispatch(addBook({
                 id: uuidv4(),
@@ -36,7 +38,11 @@ function Modal({ show, item, onClose }) {
                 description: item.description,
                 category: item.category,
             }));
-            showAlreadyToast()
+            showAlreadyToast({
+                title: "SUCCESS",
+                text:  "You have this book in your cart already! We will increase the quantity for you",
+                icon:  "success"
+            })
         }
         setShowSuccessMessage(true);
         setTimeout(() => {

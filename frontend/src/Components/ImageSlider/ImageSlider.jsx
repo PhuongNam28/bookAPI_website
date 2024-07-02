@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {ArrowBigLeft,ArrowBigRight} from "lucide-react"
-import './imageslider.scss'
+
 function ImageSlider({ imageUrls }) {
     const [imageIndex, setImageIndex] = useState(1)
     const showPreImg = () => {

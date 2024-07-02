@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 
-const ToastDelete = ({ onConfirm }) => {
+const DeleteBookButton = ({ onConfirm }) => {
   const showAlert = async () => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -31,4 +31,4 @@ const ToastDelete = ({ onConfirm }) => {
   );
 };
 
-export default ToastDelete;
+export default DeleteBookButton;

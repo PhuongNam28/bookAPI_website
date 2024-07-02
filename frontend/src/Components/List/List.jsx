@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 import React from 'react'
 import './list.scss'
+=======
+import React from 'react';
+
+
+>>>>>>> Stashed changes
 const List = () => {
   return (
     <div className='listContainer'>

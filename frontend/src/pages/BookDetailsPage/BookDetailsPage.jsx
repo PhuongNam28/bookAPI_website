@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
-import BookDetails from '../../Components/BookDetails/BookDetails'
+import BookDetails from '../../Components/BookDetails/index'
 import List from '../../Components/List/List'
 import TrendingBook from '../../Components/TrendingBook/TrendingBook'
 

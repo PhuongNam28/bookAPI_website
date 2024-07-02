@@ -1,13 +1,25 @@
+<<<<<<< Updated upstream
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../lib/firebase';
+=======
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth, provider } from "../lib/firebase";
+>>>>>>> Stashed changes
 
 const useAuthentication = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+<<<<<<< Updated upstream
   const signInWithEmailPassword = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -19,27 +31,29 @@ const useAuthentication = () => {
     }
   };
 
+=======
+>>>>>>> Stashed changes
   const signInWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       setUser(userCredential.user);
-      localStorage.setItem('gmail', userCredential.user.email);
-      return true; 
+      localStorage.setItem("gmail", userCredential.user.email);
+      return true;
     } catch (err) {
       setError(err.message);
-      return false; 
+      return false;
     }
   };
 
   const signOut = () => {
     auth.signOut();
     setUser(null);
-    localStorage.removeItem('gmail');
-    navigate('/login'); 
+    localStorage.removeItem("gmail");
+    navigate("/login");
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
       } else {
@@ -54,7 +68,7 @@ const useAuthentication = () => {
     error,
     signInWithEmailPassword,
     signInWithGoogle,
-    signOut
+    signOut,
   };
 };
 

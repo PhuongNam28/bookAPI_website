@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './addeditems.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addBookSelector } from '../../Redux/selector';
 import { removeBook } from '../../Redux/actions';
 import Swal from 'sweetalert2'
-import ToastDelete from '../ToastDelete/ToastDelte';
+import DeleteBookButton from '../DeleteBookButton/DeleteBookButton';
 
 function AddedItems() {
     const dispatch = useDispatch();
@@ -84,7 +83,7 @@ function AddedItems() {
                             </div>
                             <div className="cartRight">
                                 <button className='whislistButton'>Move to Whislist</button>
-                                 <ToastDelete onConfirm={() => handleRemove(cartBook.id)} />
+                                 <DeleteBookButton onConfirm={() => handleRemove(cartBook.id)} />
                             </div>
                         </div>
                     ))
