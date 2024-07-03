@@ -11,7 +11,7 @@ body {
   height: auto;
 }
 :root{
-  --navbar-color: #E42B26;
+  --navbar-color: #dc3546ce;
   --remove-button: #E42B26;
   --old-price: grey;
   --new-price: red;

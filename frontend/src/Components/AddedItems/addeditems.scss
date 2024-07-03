@@ -181,6 +181,10 @@ $hover-blue-color: #0056b3;
     display: flex;
 }
 
+.cartRight {
+    width: 30%;
+}
+
 .whislistButton,
 .removeButton {
     background-color: $blue-color;
@@ -207,29 +211,76 @@ $hover-blue-color: #0056b3;
         background-color: $button-hover-color;
     }
 }
-.quantity {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
 
-    .decrease,
-    .increase {
-        background-color: $cart-bg-color;
+@media (max-width: 700px) {
+    .cartContent {
         border: none;
-        cursor: pointer;
-        padding: 8px 12px;
-        font-size: 16px;
-        color: #333;
-        transition: $cart-transition;
+        margin-left: 0;
+    }
+    .cartItem {
+        flex-direction: column;
+        align-items: center;
 
-        &:hover {
-            background-color: $background-hover-color;
+        .cartImg {
+            margin: 0; 
+            margin-bottom: 10px; 
+        }
+
+        .cartItemInfo {
+            padding: 0;
+            text-align: center;
+
+            .cartBookName {
+                font-size: 16px; 
+                text-align: center; 
+                margin-bottom: 5px; 
+            }
+
+            .cartAuthor {
+                font-size: 14px; 
+                text-align: center; 
+            }
+
+            .cartPrice {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px; 
+
+                .cartNewPrice {
+                    font-size: 16px;
+                }
+
+                .cartOldPrice {
+                    font-size: 14px; 
+                }
+            }
+
+            .cartQuantity {
+                margin-top: 10px;
+
+                .quantity {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 10px;
+
+                    button {
+                        padding: 4px 8px; 
+                        font-size: 12px; 
+                    }
+
+                    .quantityNumber {
+                        font-size: 16px;
+                        margin: 0 10px; 
+                    }
+                }
+            }
         }
     }
 
-    .quantityNumber {
-        margin: 0 10px;
-        font-size: 18px;
-        font-weight: bold;
+    .buyButton,
+    .whislistButton,
+    .removeButton {
+        width: 100%; /* Full width buttons */
+        margin-left: 0; /* Remove left margin */
     }
 }

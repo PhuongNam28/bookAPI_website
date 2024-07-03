@@ -18,10 +18,7 @@ const routes = [
   { path: "/register", element: <RegisterPage /> }
 ];
 
-const App = () => {
-<<<<<<< Updated upstream
-=======
-  
+const App = () => { 
   const routes = [
     { path: "/", element: <HomePage /> },
     { path: "/added", element: <AddedPage /> },
@@ -31,7 +28,6 @@ const App = () => {
     { path: "/login", element: <LoginPage /> },
     { path: "/register", element: <RegisterPage /> }
   ];
->>>>>>> Stashed changes
   return (
     <BrowserRouter>
       <Routes>

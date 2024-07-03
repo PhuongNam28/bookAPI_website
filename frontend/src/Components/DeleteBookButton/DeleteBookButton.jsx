@@ -1,5 +1,6 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import { showToast } from '../ToastAdded/ToastNewAdded';
 
 const DeleteBookButton = ({ onConfirm }) => {
   const showAlert = async () => {
@@ -14,12 +15,11 @@ const DeleteBookButton = ({ onConfirm }) => {
     });
 
     if (result.isConfirmed) {
-      await Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
-
+      showToast({
+        title: "SUCCESS",
+        text:   "you have successfully get rid of the book from your cart!!!",
+        icon:  "success"
+    })
       onConfirm();
     }
   };

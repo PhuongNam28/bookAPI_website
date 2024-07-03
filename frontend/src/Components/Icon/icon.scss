@@ -41,3 +41,9 @@
     width: 50%;
     margin-top: 30px;
 }
+@media(max-width: 1300px)
+{
+    .iconContainer {
+        display: none;
+    }
+}

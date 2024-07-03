@@ -28,8 +28,7 @@ export const setShippingInfo = (shippingDetails) => {
     type: 'ADD_SHIPPING_INFO',
     payload: shippingDetails
     }
-<<<<<<< Updated upstream
+
 };
-=======
-};
->>>>>>> Stashed changes
+
+

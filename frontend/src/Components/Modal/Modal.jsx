@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { addBookSelector } from '../../Redux/selector';
 import { useNavigate } from 'react-router-dom';
 import { showToast } from '../ToastAdded/ToastNewAdded';
-import { showAlreadyToast } from '../ToastAdded/ToastAlreadyAdded';
 
 function Modal({ show, item, onClose }) {
     const dispatch = useDispatch();
@@ -23,7 +22,7 @@ function Modal({ show, item, onClose }) {
             dispatch(updateQuantity(existingBook.id, updatedQuantity));
             showToast({
                 title: "SUCCESS",
-                text:  "you have successfully added the book into your cart!!!",
+                text: "You have this book in your cart already! We will increase the quantity for you",
                 icon:  "success"
             })
         } else {
@@ -38,9 +37,9 @@ function Modal({ show, item, onClose }) {
                 description: item.description,
                 category: item.category,
             }));
-            showAlreadyToast({
+            showToast({
                 title: "SUCCESS",
-                text:  "You have this book in your cart already! We will increase the quantity for you",
+                text:   "you have successfully added the book into your cart!!!",
                 icon:  "success"
             })
         }

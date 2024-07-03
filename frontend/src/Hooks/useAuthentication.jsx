@@ -1,38 +1,15 @@
-<<<<<<< Updated upstream
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../lib/firebase';
-=======
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth, provider } from "../lib/firebase";
->>>>>>> Stashed changes
 
 const useAuthentication = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-<<<<<<< Updated upstream
-  const signInWithEmailPassword = async (email, password) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
-      return true; 
-    } catch (err) {
-      setError(err.message);
-      return false; 
-    }
-  };
-
-=======
->>>>>>> Stashed changes
   const signInWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
@@ -66,7 +43,6 @@ const useAuthentication = () => {
   return {
     user,
     error,
-    signInWithEmailPassword,
     signInWithGoogle,
     signOut,
   };

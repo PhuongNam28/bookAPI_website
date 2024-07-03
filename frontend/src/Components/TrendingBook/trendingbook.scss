@@ -66,6 +66,7 @@ $background-color: #ffffffc5;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        margin-top: 10px;
     }
 
     .bookAuthor {
@@ -175,4 +176,68 @@ $background-color: #ffffffc5;
 
 .slick-dots li.slick-active button:before {
     color: black;
+}
+@media (max-width: 500px) {
+    .trendingBook {
+        position: relative;
+        .seeDetails {
+            position: static; /* or adjust as per your layout needs */
+            display: block;
+            top: 350px;
+            right: 300px;
+            right: auto; /* reset any specific positioning */
+            width: auto; /* reset width */
+            margin-top: 10px; /* adjust margin or spacing as needed */
+            margin: 0 auto;
+        }
+        .bookTitle {
+            font-size: 20px;
+            font-weight: 100;
+            color: #676767;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+
+        }
+        .bookAuthor {
+            font-size: 15px;
+            color: black;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    
+        .sale-off {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $accent-color;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            color: white;
+            font-size: 12px;
+            line-height: 35px;
+            font-weight: 800;
+        }
+    
+        .price {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            .oldPrice {
+                text-decoration: line-through;
+                color: grey;
+                font-size: 12px;
+            }
+    
+            .newPrice {
+                color: $accent-color;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+    }
 }

@@ -10,45 +10,74 @@ $auto: auto;
 $box-shadow: 2px 2px 7px;
 
 .allBestSellerContainer {
-    margin-top: $margin-30;
-    padding: $padding-30;
-    width: $width-full;
-    display: flex;
-    flex-direction: column;
-    align-items: $center;
+  margin-top: $margin-30;
+  padding: $padding-30;
+  width: $width-full;
+  display: flex;
+  flex-direction: column;
+  align-items: $center;
 }
 
 .bestSellerContainer {
-    width: 100%;
+  width: 100%;
 
-    .slick-slider {
-        width: 90%;
-        margin: $auto;
-    }
+  .slick-slider {
+    width: 90%;
+    margin: $auto;
+  }
 }
 
 .bestSeller {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: $center;
-    margin: 50px;
-    color: $black-color;
-    font-size: $font-size-20;
-    font-family: $font-family-georgia;
-    font-weight: $font-weight-500;
-    text-align: $center;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: $center;
+  margin: 50px;
+  color: $black-color;
+  font-size: $font-size-20;
+  font-family: $font-family-georgia;
+  font-weight: $font-weight-500;
+  text-align: $center;
+
+  .title,
+  .author {
+    margin-top: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .author {
+    font-size: 18px;
+  }
 }
 
 .bestSellerPic {
-    mix-blend-mode: darken;
-    width: 240px;
-    height: 280px;
-    border-radius: 10px;
-    box-shadow: $box-shadow;
-    object-fit: cover;
+  mix-blend-mode: darken;
+  width: 240px;
+  height: 280px;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+  object-fit: cover;
 
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .bestSeller {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .bestSellerPic {
+    width: 100%;
+    height: 200px;
+  }
 }

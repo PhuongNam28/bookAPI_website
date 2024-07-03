@@ -34,7 +34,39 @@ function InternationalBestSeller() {
         slidesToShow: 6,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+          {
+              breakpoint: 1600,
+              settings: {
+                  slidesToShow: 5,
+              }
+          },
+          {
+              breakpoint: 1200,
+              settings: {
+                  slidesToShow: 4,
+              }
+          },
+          {
+              breakpoint: 900,
+              settings: {
+                  slidesToShow: 3,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToShow: 2,
+              }
+          },
+          {
+              breakpoint: 400,
+              settings: {
+                  slidesToShow: 2,
+              }
+          }
+      ] 
       };
       useEffect(()=>{
         axios('https://www.googleapis.com/books/v1/volumes?q=internationalbestseller&key=AIzaSyDmoBeD1zSdaHgR9nh7HUS142-0L6iNL80')
@@ -52,8 +84,8 @@ function InternationalBestSeller() {
                     return (
                       <div key={item.id} className='bestSeller'>
                           <img className='bestSellerPic' src={item.volumeInfo.imageLinks.thumbnail} alt="No pic" />
-                          <p>{item.volumeInfo.title}</p>
-                          <p>{item.volumeInfo.authors}</p>
+                          <p className='title'>{item.volumeInfo.title}</p>
+                          <p className='author'>{item.volumeInfo.authors}</p>
                       </div>
                     )
                   })

@@ -48,17 +48,10 @@ const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
             return state;
     }
 };
-
-<<<<<<< Updated upstream
-
 const rootReducer = combineReducers({
     addedBooks: addedBooksReducer,
     shippings: shippingReducer
-=======
-const rootReducer = combineReducers({
-    addedBooks: addedBooksReducer,
-    shippings: shippingReducer,
->>>>>>> Stashed changes
+
 });
 
 export default rootReducer;

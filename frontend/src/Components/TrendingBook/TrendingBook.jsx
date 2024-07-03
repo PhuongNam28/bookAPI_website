@@ -3,6 +3,7 @@ import './trendingbook.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from '../Modal/index';
+
 import Slider from "react-slick";
 import trendingBooks from "../../Data/data.js"
 
@@ -38,7 +39,39 @@ function TrendingBook() {
         slidesToShow: 6,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1600,
+                settings: {
+                    slidesToShow: 5,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }
+        ]
     };
     const calculateDiscount = (oldPrice, newPrice) => {
         const discount = ((oldPrice - newPrice) / oldPrice) * 100;

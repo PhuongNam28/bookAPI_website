@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className='headerContainer'>
       <div className="firstImg">
-          <img src="https://i.pinimg.com/originals/bb/eb/2e/bbeb2eb19cc25ae4a9fe214dc6044d39.png" alt="" />
+          <img src="https://i.pinimg.com/736x/87/91/d3/8791d39fc9053bad34ec25858391e881.jpg" alt="" />
       </div>
 
       <div className='secondImg'>
