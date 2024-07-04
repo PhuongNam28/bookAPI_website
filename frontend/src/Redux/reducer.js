@@ -14,7 +14,6 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
         case 'BOOK/ADD_BOOK':
             return [...state, action.payload];
         case 'BOOK/UPDATE_QUANTITY':
-            
             return state.map(book => {
                 if (book.id === action.payload.id) {
                     return {

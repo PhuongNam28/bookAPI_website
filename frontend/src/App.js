@@ -7,16 +7,7 @@ import ConfirmPage from './pages/ConfirmPage/ConfirmPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage';
-
-const routes = [
-  { path: "/", element: <HomePage /> },
-  { path: "/added", element: <AddedPage /> },
-  { path: "/shippinginfo", element: <ShippingInfoPage /> },
-  { path: "/confirm", element: <ConfirmPage /> },
-  { path: "/details", element: <BookDetailsPage /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/register", element: <RegisterPage /> }
-];
+import MyOrdersPage from './pages/MyOrdersPage/MyOrdersPage';
 
 const App = () => { 
   const routes = [
@@ -26,7 +17,8 @@ const App = () => {
     { path: "/confirm", element: <ConfirmPage/> },
     { path: "/details", element: <BookDetailsPage /> },
     { path: "/login", element: <LoginPage /> },
-    { path: "/register", element: <RegisterPage /> }
+    { path: "/register", element: <RegisterPage /> },
+    { path: "/myorders", element: <MyOrdersPage /> }
   ];
   return (
     <BrowserRouter>

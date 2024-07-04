@@ -188,4 +188,21 @@
       margin-top: 0;
     }
   }
+  .savedAddress {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .savedAddress:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .savedAddress p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
   

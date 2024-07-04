@@ -21,12 +21,12 @@ const Navbar = () => {
             </div>
             <div className='user'>
                 <div className='userAccount' onClick={handleClick}>
-                    <FontAwesomeIcon icon={faUser} /> My account
+                    <FontAwesomeIcon style={{"color":"red"}} icon={faUser} /> My account
                 </div>
                 <div className={`menu ${open ? 'open' : ''}`}>
                     <ul>
                         <li><FontAwesomeIcon icon={faUserCircle} /> My Profile</li>
-                        <li><FontAwesomeIcon icon={faClipboardList} /> My Order</li>
+                        <Link to="/myorders"><li><FontAwesomeIcon icon={faUser}/> My Orders</li></Link>
                         <li><FontAwesomeIcon icon={faCog} /> Setting</li>
                         <li><FontAwesomeIcon icon={faEnvelope} /> Inbox</li>
                         <Link to="/login"><li><FontAwesomeIcon icon={faUser} /> Login</li></Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to="/added" className='userCart'>
-                    <FontAwesomeIcon icon={faShoppingCart} /> Shopping cart
+                    <FontAwesomeIcon style={{"color":"red"}} icon={faShoppingCart} /> Shopping cart
                 </Link>
             </div>
         </div>

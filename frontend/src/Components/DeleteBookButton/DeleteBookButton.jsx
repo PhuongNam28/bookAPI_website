@@ -25,7 +25,7 @@ const DeleteBookButton = ({ onConfirm }) => {
   };
 
   return (
-    <button onClick={showAlert} className='removeButton'>
+    <button onClick={showAlert} className='removeButton delete-button'>
       Remove
     </button>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./shippinginfo.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookSelector } from "../../Redux/selector";
@@ -7,6 +7,68 @@ import { setShippingInfo } from "../../Redux/actions";
 
 function ShippingInfo() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cartBooks = useSelector(addBookSelector);
+
+  // State to store shipping details and errors
+  const [shippingDetails, setShippingDetails] = useState({
+    recipientName: "",
+    companyName: "",
+    streetAddress: "",
+    landmark: "",
+    country: "VietNam",
+    cityName: "",
+    zipCode: "",
+    mobile: "",
+    phone: "",
+  });
+
+  const [errors, setErrors] = useState({
+    recipientName: false,
+    streetAddress: false,
+    mobile: false,
+    phone: false,
+  });
+
+  const [savedAddresses, setSavedAddresses] = useState([]);
+
+
+  useEffect(() => {
+    const saved = localStorage.getItem("savedAddresses");
+    if (saved) {
+      setSavedAddresses(JSON.parse(saved));
+    }
+  }, []);
+
+
+  const saveToLocalStorage = (address) => {
+    const updatedAddresses = [...savedAddresses, address];
+    setSavedAddresses(updatedAddresses);
+    localStorage.setItem("savedAddresses", JSON.stringify(updatedAddresses));
+  };
+
+  const totalQuantity = cartBooks.reduce((acc, book) => acc + book.quantity, 0);
+  const subTotal = cartBooks.reduce(
+    (acc, book) => acc + book.quantity * book.newPrice,
+    0
+  );
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setShippingDetails({
+      ...shippingDetails,
+      [name]: value,
+    });
+  };
+
+  const handleSaveAndContinue = () => {
+    if (validateForm()) {
+      saveToLocalStorage(shippingDetails);
+      dispatch(setShippingInfo(shippingDetails));
+      navigate("/confirm");
+    }
+  };
+
   // Validate form input
   const validateForm = () => {
     let isValid = true;
@@ -35,79 +97,9 @@ function ShippingInfo() {
     setErrors(newErrors);
     return isValid;
   };
-  const dispatch = useDispatch();
-  const cartBooks = useSelector(addBookSelector);
 
-  // State để lưu trữ thông tin vận chuyển và lỗi
-  const [shippingDetails, setShippingDetails] = useState({
-    recipientName: "",
-    companyName: "",
-    streetAddress: "",
-    landmark: "",
-    country: "VietNam",
-    cityName: "",
-    zipCode: "",
-    mobile: "",
-    phone: "",
-  });
-
-  const [errors, setErrors] = useState({
-    recipientName: false,
-    streetAddress: false,
-    mobile: false,
-    phone: false,
-  });
-
-  // Tính tổng số lượng và tổng giá tiền
-  const totalQuantity = cartBooks.reduce((acc, book) => acc + book.quantity, 0);
-  const subTotal = cartBooks.reduce(
-    (acc, book) => acc + book.quantity * book.newPrice,
-    0
-  );
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setShippingDetails({
-      ...shippingDetails,
-      [name]: value,
-    });
-  };
-
-  const handleSaveAndContinue = () => {
-    let formIsValid = true;
-    const newErrors = {
-      recipientName: false,
-      streetAddress: false,
-      mobile: false,
-      phone: false,
-    };
-
-    if (shippingDetails.recipientName === "") {
-      newErrors.recipientName = true;
-      formIsValid = false;
-    }
-
-    if (shippingDetails.streetAddress === "") {
-      newErrors.streetAddress = true;
-      formIsValid = false;
-    }
-
-    if (shippingDetails.mobile === "") {
-      newErrors.mobile = true;
-      formIsValid = false;
-    }
-
-    if (shippingDetails.phone === "") {
-      newErrors.phone = true;
-      formIsValid = false;
-    }
-
-    setErrors(newErrors);
-
-    if (formIsValid) {
-      dispatch(setShippingInfo(shippingDetails));
-      navigate("/confirm");
-    }
+  const handleSelectSavedAddress = (address) => {
+    setShippingDetails(address);
   };
 
   return (
@@ -120,8 +112,16 @@ function ShippingInfo() {
           <div className="shippingInfoProgress">Shipping Address</div>
           <div className="shippingInfoAddress">
             <div className="shippingInfoOldAddress">
-              The shipping address will be saved to your account to help <br />{" "}
-              you a faster checkout with your next orders.
+              <h2>Saved Addresses</h2>
+              {savedAddresses.length > 0 ? (
+                savedAddresses.map((address, index) => (
+                  <div key={index} className="savedAddress" onClick={() => handleSelectSavedAddress(address)}>
+                    <p>{address.recipientName}, {address.cityName}, {address.streetAddress}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No saved addresses found.</p>
+              )}
             </div>
             <div className="shippingInfoDetails">
               Receipient Name:{" "}
@@ -133,9 +133,7 @@ function ShippingInfo() {
                 className={errors.recipientName ? "error" : ""}
               />
               {errors.recipientName && (
-                <span className="errorMessage">
-                  Please enter recipient name
-                </span>
+                <span className="errorMessage">Please enter recipient name</span>
               )}
               Company Name:{" "}
               <input
@@ -154,12 +152,9 @@ function ShippingInfo() {
                 className={errors.streetAddress ? "error" : ""}
               ></textarea>
               {errors.streetAddress && (
-                <span className="errorMessage">
-                  Please enter street address
-                </span>
+                <span className="errorMessage">Please enter street address</span>
               )}
-              Please provide the Address at which you would be available between
-              9 AM – 6 PM as our Courier partners deliver between this time{" "}
+              Please provide the Address at which you would be available between 9 AM – 6 PM as our Courier partners deliver between this time{" "}
               <br />
               LandMark:{" "}
               <input

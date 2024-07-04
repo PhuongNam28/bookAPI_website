@@ -3,7 +3,7 @@ $navbar-padding: 15px 7%;
 $navbar-bg-color: var(--navbar-color);
 $font-family: Godwit, MuseoSans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 $white-color: white;
-$hover-bg-color: #ccccccb2;
+$hover-bg-color: #ccccccd2;
 $menu-bg-color: #fff;
 $menu-border-color: black;
 $menu-shadow-color: rgba(0, 0, 0, 0.1);
@@ -21,9 +21,9 @@ $menu-hover-color: #555;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: $navbar-bg-color;
+    background-color:rgba(255, 255, 255, 0.918);
     font-family: $font-family;
-    box-shadow: 1px 3px 4px  rgba(0,0,0,0.1);
+    box-shadow: 1px 3px 4px  rgba(0,0,0,0.4);
 }
 
 .navbarLogo {
@@ -37,9 +37,9 @@ $menu-hover-color: #555;
 
 .searchInput {
     background-color: transparent;
-    color: $white-color;
+    color: black;
     border-radius: 5px;
-    border: 1px solid $white-color;
+    border: 1px solid black;
     padding: 10px;
     height: 30px;
     width: 500px;
@@ -47,7 +47,7 @@ $menu-hover-color: #555;
     font-size: 16px;
 
     &::placeholder {
-        color: $white-color;
+        color:black;
     }
 }
 
@@ -58,7 +58,7 @@ $menu-hover-color: #555;
         position: relative;
         top: 11px;
         border-radius: 3px;
-        background-color: transparent;
+        mix-blend-mode: darken;
         left: 10px;
     }
 }
@@ -72,13 +72,14 @@ $menu-hover-color: #555;
 
 .userAccount {
     padding: 8px 12px; 
-    border-right: 1px solid #ccc;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     border-radius: 5px;
     margin-right: 10px;
     position: relative;
     display: flex;
     align-items: center;
-    color: $white-color;
+    color: black;
     transition: background-color 0.3s ease;
 
     .fa-user {
@@ -93,9 +94,11 @@ $menu-hover-color: #555;
 .userCart {
     display: flex;
     align-items: center;
-    color: $white-color;
+    color: black;
     text-decoration: none;
     padding: 8px 12px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 

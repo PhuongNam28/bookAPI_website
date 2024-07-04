@@ -47,7 +47,8 @@ $background-color: #ffffffc5;
         height: 400px;
         border-radius: 10px;
         box-shadow: 2px 2px 7px;
-
+        padding: 10px;
+        border-radius: 3px;
         &:hover {
             cursor: pointer;
         }

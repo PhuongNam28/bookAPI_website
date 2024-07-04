@@ -17,7 +17,7 @@ import { auth } from "../../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useUserStore } from "../../lib/userStore";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
-
+import './homepage.css'
 function HomePage() {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
 
@@ -32,7 +32,14 @@ function HomePage() {
 
   console.log(currentUser);
 
-  if (isLoading) return <div className="loading">Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="loading">
+         Loading, Please Wait...
+        <div className="spinner"></div>
+      </div>
+    );
+  }
   return (
     <div className="homePage">
       {currentUser ? (

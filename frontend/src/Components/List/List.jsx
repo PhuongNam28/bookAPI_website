@@ -37,7 +37,7 @@ const List = () => {
             <li className='hideOnMobile'><a href="">Request a Book</a></li>
             <li className='menuButton' onClick={showSidebar}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></li>
         </ul>
-        <hr/>
+        <hr style={{"border-color":"black"}}/>
     </div>
   )
 }
