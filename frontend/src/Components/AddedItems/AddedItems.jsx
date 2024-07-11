@@ -86,18 +86,20 @@ function AddedItems() {
                 </div>
               </div>
               <div className="cartRight">
-                <button className="whislistButton">Move to Whislist</button>
+                <button className="whislistButton">Move to Wishlist</button>
                 <DeleteBookButton onConfirm={() => handleRemove(cartBook.id)} />
               </div>
             </div>
           ))
         )}
-        <div className="cartTotal">
-          <div className="total">Total: ${total.toFixed(2)}</div>
-          <Link to="/shippinginfo" className="buyButton">
-            Buy Now
-          </Link>
-        </div>
+        {cartBooks.length > 0 && (
+          <div className="cartTotal">
+            <div className="total">Total: ${total.toFixed(2)}</div>
+            <Link to="/shippinginfo" className="buyButton">
+              Buy Now
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

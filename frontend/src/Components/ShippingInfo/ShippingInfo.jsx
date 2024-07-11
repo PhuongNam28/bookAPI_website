@@ -1,106 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./shippinginfo.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addBookSelector } from "../../Redux/selector";
-import { Link, useNavigate } from "react-router-dom";
-import { setShippingInfo } from "../../Redux/actions";
+import useShipping from "../../Hooks/useShipping";
 
 function ShippingInfo() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const cartBooks = useSelector(addBookSelector);
-
-  // State to store shipping details and errors
-  const [shippingDetails, setShippingDetails] = useState({
-    recipientName: "",
-    companyName: "",
-    streetAddress: "",
-    landmark: "",
-    country: "VietNam",
-    cityName: "",
-    zipCode: "",
-    mobile: "",
-    phone: "",
-  });
-
-  const [errors, setErrors] = useState({
-    recipientName: false,
-    streetAddress: false,
-    mobile: false,
-    phone: false,
-  });
-
-  const [savedAddresses, setSavedAddresses] = useState([]);
-
-
-  useEffect(() => {
-    const saved = localStorage.getItem("savedAddresses");
-    if (saved) {
-      setSavedAddresses(JSON.parse(saved));
-    }
-  }, []);
-
-
-  const saveToLocalStorage = (address) => {
-    const updatedAddresses = [...savedAddresses, address];
-    setSavedAddresses(updatedAddresses);
-    localStorage.setItem("savedAddresses", JSON.stringify(updatedAddresses));
-  };
-
-  const totalQuantity = cartBooks.reduce((acc, book) => acc + book.quantity, 0);
-  const subTotal = cartBooks.reduce(
-    (acc, book) => acc + book.quantity * book.newPrice,
-    0
-  );
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setShippingDetails({
-      ...shippingDetails,
-      [name]: value,
-    });
-  };
-
-  const handleSaveAndContinue = () => {
-    if (validateForm()) {
-      saveToLocalStorage(shippingDetails);
-      dispatch(setShippingInfo(shippingDetails));
-      navigate("/confirm");
-    }
-  };
-
-  // Validate form input
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = {
-      recipientName: false,
-      streetAddress: false,
-      mobile: false,
-      phone: false,
-    };
-    if (!shippingDetails.recipientName) {
-      newErrors.recipientName = true;
-      isValid = false;
-    }
-    if (!shippingDetails.streetAddress) {
-      newErrors.streetAddress = true;
-      isValid = false;
-    }
-    if (!shippingDetails.mobile || !/^\d{10}$/.test(shippingDetails.mobile)) {
-      newErrors.mobile = true;
-      isValid = false;
-    }
-    if (!shippingDetails.phone || !/^\d{10}$/.test(shippingDetails.phone)) {
-      newErrors.phone = true;
-      isValid = false;
-    }
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSelectSavedAddress = (address) => {
-    setShippingDetails(address);
-  };
+  const {
+    shippingDetails,
+    errors,
+    savedAddresses,
+    totalQuantity,
+    subTotal,
+    handleInputChange,
+    handleSaveAndContinue,
+    handleSelectSavedAddress,
+  } = useShipping();
 
   return (
     <div className="shippingInfoContainer">
@@ -133,7 +45,7 @@ function ShippingInfo() {
                 className={errors.recipientName ? "error" : ""}
               />
               {errors.recipientName && (
-                <span className="errorMessage">Please enter recipient name</span>
+                <span className="errorMessage">{errors.recipientName}</span>
               )}
               Company Name:{" "}
               <input
@@ -152,17 +64,12 @@ function ShippingInfo() {
                 className={errors.streetAddress ? "error" : ""}
               ></textarea>
               {errors.streetAddress && (
-                <span className="errorMessage">Please enter street address</span>
+                <span className="errorMessage">{errors.streetAddress}</span>
               )}
-              Please provide the Address at which you would be available between 9 AM – 6 PM as our Courier partners deliver between this time{" "}
+              <p style={{ color: "blue" }}>
+                Please provide the Address at which you would be available between 9 AM – 6 PM as our Courier partners deliver between this time{" "}
+              </p>
               <br />
-              LandMark:{" "}
-              <input
-                type="text"
-                name="landmark"
-                value={shippingDetails.landmark}
-                onChange={handleInputChange}
-              />
               Country:{" "}
               <select
                 name="country"
@@ -187,17 +94,6 @@ function ShippingInfo() {
                 value={shippingDetails.zipCode}
                 onChange={handleInputChange}
               />
-              Mobile:{" "}
-              <input
-                type="text"
-                name="mobile"
-                value={shippingDetails.mobile}
-                onChange={handleInputChange}
-                className={errors.mobile ? "error" : ""}
-              />
-              {errors.mobile && (
-                <span className="errorMessage">Please enter mobile number</span>
-              )}
               Phone:{" "}
               <input
                 type="text"
@@ -207,7 +103,7 @@ function ShippingInfo() {
                 className={errors.phone ? "error" : ""}
               />
               {errors.phone && (
-                <span className="errorMessage">Please enter phone number</span>
+                <span className="errorMessage">{errors.phone}</span>
               )}
               <button onClick={handleSaveAndContinue}>Save & Continue</button>
             </div>

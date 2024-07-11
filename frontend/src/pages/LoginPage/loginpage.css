@@ -33,7 +33,7 @@
     text-align: left;
 }
 
-.formLogin input[type="text"], .formLogin input[type="password"] {
+.formLogin input[type="text"], .formLogin input[type="password"], .formLogin input[type="email"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0 20px;
@@ -43,7 +43,7 @@
     background: #f9f9f9;
 }
 
-.formLogin input[type="text"]:focus, .formLogin input[type="password"]:focus {
+.formLogin input[type="text"]:focus, .formLogin input[type="password"]:focus, .formLogin input[type="email"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
     outline: none;
@@ -63,7 +63,7 @@
 .loginButton {
     background: linear-gradient(to right, #00c6ff, #7C6FEE, #B141F5, #F308FE);
     color: white;
-    transition: background 1s ease-in-out;
+    transition: background 1s ease-in;
 }
 
 .loginButton:hover {
@@ -129,3 +129,16 @@
     margin-top: 20px;
     font-size: 14px;
 }
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+    }
+    
+    @media (min-width: 1025px) {
+    .h-custom-2 {
+    height: 100%;
+    }
+    }

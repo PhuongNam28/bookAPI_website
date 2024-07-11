@@ -5,7 +5,7 @@ import useAuthentication from "../../Hooks/useAuthentication";
 import Notification from "../../Components/Notification/Notification";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const { signInWithGoogle } = useAuthentication();
@@ -15,26 +15,37 @@ function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/");
-      })
-      .catch(() => {
-        toast.error("Wrong Password or UserName, Please try again!!!");
-      });
+
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log("User:", user);
+      navigate("/");
+    } catch (error) {
+      if (error.code === 'auth/invalid-credential') {
+        toast.error("Account does not exist. Please register before logging in.");
+      } else if (error.code === 'auth/invalid-email') {
+        toast.error("Wrong Password. Please try again.");
+      } else {
+        toast.error("Login Error: Please try again.");
+      }
+      console.error("Login Error:", error);
+    }
   };
+
+
   const handleClick = async () => {
     const success = await signInWithGoogle();
     if (success) {
       navigate("/");
-
     } else {
       toast.error("Google login failed! Please try again.");
-    
     }
   };
+
   return (
     <div className="loginContainer">
       <form className="formLogin" onSubmit={handleLogin}>
@@ -44,7 +55,7 @@ function LoginPage() {
           className="userEmail"
           type="email"
           placeholder="Enter user email"
-          name="email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
@@ -52,7 +63,7 @@ function LoginPage() {
           className="userPassword"
           type="password"
           placeholder="Enter user password"
-          name="password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="loginButton" type="submit">
@@ -68,7 +79,7 @@ function LoginPage() {
           <button className="google">G</button>
         </div>
         <div className="signupLink">
-          <a href="#">Sign Up</a>
+          <Link to="/signup">Sign Up</Link>
         </div>
       </form>
       <Notification />

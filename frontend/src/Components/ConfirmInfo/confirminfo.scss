@@ -24,7 +24,7 @@
     flex-direction: column;
   
     .confirmInfoLeft {
-      width: 100%;
+      width:70%;
       margin-bottom: 20px;
       border: 1px solid #ddd;
       border-radius: 8px;
@@ -36,7 +36,7 @@
     }
   
     .confirmInfoRight {
-      width: 100%;
+      width: 30%;
       border: 1px solid #ddd;
       border-radius: 8px;
       background-color: #fff;
@@ -45,6 +45,25 @@
       padding: 20px 10px;
       box-sizing: border-box;
     }
+  }
+  .confirmButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .confirmButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
   }
   
   .boughtItem {

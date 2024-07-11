@@ -3,76 +3,15 @@ import './trendingbook.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from '../Modal/index';
-
 import Slider from "react-slick";
 import trendingBooks from "../../Data/data.js"
+import settings from '../../Hooks/slideSetting.js';
 
 
 function TrendingBook() {
     const [show, setShow] = useState(false);
     const [item, setItem] = useState();
-    
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{ ...style, display: "block", background: "black", borderRadius: "50%" }}
-                onClick={onClick}
-            />
-        );
-    }
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-            <div
-                className={className}
-                style={{ ...style, display: "block", background: "black", borderRadius: "50%" }}
-                onClick={onClick}
-            />
-        );
-    }
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-        responsive: [
-            {
-                breakpoint: 1600,
-                settings: {
-                    slidesToShow: 5,
-                }
-            },
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 4,
-                }
-            },
-            {
-                breakpoint: 900,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    slidesToShow: 2,
-                }
-            }
-        ]
-    };
+   
     const calculateDiscount = (oldPrice, newPrice) => {
         const discount = ((oldPrice - newPrice) / oldPrice) * 100;
         return Math.round(discount);

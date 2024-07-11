@@ -1,0 +1,131 @@
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #5CA5EA, #C430F8, #B141F5);
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 60vh;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+   
+}
+
+.formLogin h1 {
+    margin-bottom: 30px;
+    font-size: 46px;
+    color: #333;
+}
+
+.formLogin label {
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.formLogin input[type="text"], .formLogin input[type="password"], .formLogin input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #f9f9f9;
+}
+
+.formLogin input[type="text"]:focus, .formLogin input[type="password"]:focus, .formLogin input[type="email"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+.loginButton, .googleButton {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.loginButton {
+    background: linear-gradient(to right, #00c6ff, #7C6FEE, #B141F5, #F308FE);
+    color: white;
+    transition: background 1s ease-in;
+}
+
+.loginButton:hover {
+    background: linear-gradient(to right, #F308FE, #B141F5, #7C6FEE, #00c6ff);
+}
+
+.googleButton {
+    background: #db4437;
+    color: white;
+}
+
+.googleButton:hover {
+    background: #c3362a;
+}
+
+.formLogin a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.formLogin a:hover {
+    text-decoration: underline;
+}
+
+.socialButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.socialButtons button {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.socialButtons button:hover {
+    transform: scale(1.1);
+}
+
+.socialButtons .facebook {
+    background: #3b5998;
+    color: white;
+}
+
+.socialButtons .twitter {
+    background: #1da1f2;
+    color: white;
+}
+
+.socialButtons .google {
+    background: #db4437;
+    color: white;
+}
+
+.signupLink {
+    margin-top: 20px;
+    font-size: 14px;
+}
