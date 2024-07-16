@@ -11,6 +11,7 @@ function SampleNextArrow(props) {
           display: "block",
           background: "black",
           borderRadius: "50%",
+          zIndex: "750"
         }}
         onClick={onClick}
       />
@@ -27,6 +28,7 @@ function SampleNextArrow(props) {
           display: "block",
           background: "black",
           borderRadius: "50%",
+          zIndex: "750"
         }}
         onClick={onClick}
       />

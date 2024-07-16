@@ -3,13 +3,11 @@ import "./signuppage.css";
 import { toast } from "react-toastify";
 import useAuthentication from "../../Hooks/useAuthentication";
 import Notification from "../../Components/Notification/Notification";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../lib/firebase"; // Ensure your Firestore instance is imported here
 import { Link, useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
 
 function RegisterPage() {
-  const { signInWithGoogle } = useAuthentication();
+  const { createUserWithEmailAndPassword, signInWithGoogle } =
+    useAuthentication();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,18 +19,12 @@ function RegisterPage() {
     console.log("Password:", password);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("User:", user);
-
-      // Save user information to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        uid: user.uid,
-        password: password
-      });
-
-      navigate("/");
+      const success = await createUserWithEmailAndPassword(email, password);
+      if (success) {
+        navigate("/");
+      } else {
+        toast.error("Error creating account, please try again!!!");
+      }
     } catch (error) {
       console.error("Registration Error:", error);
       toast.error("Error creating account, please try again!!!");

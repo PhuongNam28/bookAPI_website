@@ -12,29 +12,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/reading-book.png";
 import SearchBar from "../SearchBar/SearchBar";
-import trendingBooks from '../../Data/data';
-import BookInfo from "../DetailsComponent/BookInfo/BookInfo";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
-//   const [query, setQuery] = useState('');
-//   const [selectedBookId, setSelectedBookId] = useState(null);
-
-//   const handleSearch = (searchQuery) => {
-//     setQuery(searchQuery);
-//     setSelectedBookId(null);
-//     };
-
-//     const filteredBooks = trendingBooks.filter((book) =>
-//         book.title.toLowerCase().includes(query.toLowerCase())
-//     );
-
-//     const handleSelectBook = (bookId) => {
-//         setSelectedBookId(bookId);
-//     };
 
   return (
     <div className="navbarContainer">
@@ -47,7 +30,7 @@ const Navbar = () => {
           alt=""
         />
       </div>
-      <SearchBar/>
+      <SearchBar />
       <div className="user">
         <div className="userAccount" onClick={handleClick}>
           <FontAwesomeIcon style={{ color: "red" }} icon={faUser} /> My account
