@@ -3,12 +3,10 @@ import "./loginpage.css";
 import { toast } from "react-toastify";
 import useAuthentication from "../../Hooks/useAuthentication";
 import Notification from "../../Components/Notification/Notification";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../lib/firebase";
 import { Link, useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const { signInWithGoogle } = useAuthentication();
+  const { signInWithEmailAndPassword, signInWithGoogle } = useAuthentication();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -20,22 +18,17 @@ function LoginPage() {
     console.log("Password:", password);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("User:", user);
-      navigate("/");
-    } catch (error) {
-      if (error.code === 'auth/invalid-credential') {
-        toast.error("Account does not exist. Please register before logging in.");
-      } else if (error.code === 'auth/invalid-email') {
-        toast.error("Wrong Password. Please try again.");
+      const success = await signInWithEmailAndPassword(email, password);
+      if (success) {
+        navigate("/");
       } else {
-        toast.error("Login Error: Please try again.");
+        toast.error("Invalid email or password. Please try again.");
       }
+    } catch (error) {
       console.error("Login Error:", error);
+      toast.error("Login Error: Please try again.");
     }
   };
-
 
   const handleClick = async () => {
     const success = await signInWithGoogle();
