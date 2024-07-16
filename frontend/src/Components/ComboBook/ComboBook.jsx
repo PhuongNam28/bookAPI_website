@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import cb1 from '../../assets/ComboBook/combo1.jpg';
 import cb2 from '../../assets/ComboBook/Combo2.jpg';
 import cb3 from '../../assets/ComboBook/combo3.jpg';
-import './combobook.css'
+
 function ComboBook() {
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -32,7 +32,7 @@ function ComboBook() {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1.05,
+        slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />

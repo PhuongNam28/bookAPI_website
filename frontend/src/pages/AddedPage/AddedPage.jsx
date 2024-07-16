@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import List from '../../Components/List/List'
 import Footer from '../../Components/Footer/Footer'
-import AddedItems from '../../Components/AddedItems/AddedItems'
+import AddedItems from '../../Components/AddedItems/index'
 
 function AddedPage() {
   return (

@@ -18,10 +18,17 @@ export const removeBook = (id) => ({
   payload: id
 });
 
+export const removeAllBooks = () => ({
+    type: 'BOOK/REMOVE_ALLBOOK',
+});
+
 // xac nhan thong tin thanh toan
 export const setShippingInfo = (shippingDetails) => {
     return {
     type: 'ADD_SHIPPING_INFO',
     payload: shippingDetails
     }
+
 };
+
+

@@ -14,7 +14,6 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
         case 'BOOK/ADD_BOOK':
             return [...state, action.payload];
         case 'BOOK/UPDATE_QUANTITY':
-            
             return state.map(book => {
                 if (book.id === action.payload.id) {
                     return {
@@ -26,11 +25,17 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
             });
         case 'BOOK/REMOVE_BOOK':
             return state.filter(book => book.id !== action.payload);
+        case 'BOOK/REMOVE_ALLBOOK':
+            return {
+                ...state,
+                cartBooks: [],
+            };
         default:
             return state;
     }
 }
 
+//Reducer shipping
 const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
     switch(action.type) {
         case 'ADD_SHIPPING_INFO':
@@ -42,11 +47,10 @@ const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
             return state;
     }
 };
-
-
 const rootReducer = combineReducers({
     addedBooks: addedBooksReducer,
     shippings: shippingReducer
+
 });
 
 export default rootReducer;

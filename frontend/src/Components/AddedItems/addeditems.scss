@@ -1,0 +1,286 @@
+$border-color: #ccc;
+$text-color: black;
+$background-hover-color: #e0e0e0;
+$button-hover-color: #c82333;
+$red-color: red;
+$font-family-georgia: Georgia, 'Times New Roman', Times, serif;
+$cart-bg-color: #f0f0f0;
+$cart-transition: background-color 0.3s ease;
+$white-color: white;
+$blue-color: #007bff;
+$hover-blue-color: #0056b3;
+
+.addedItemsContainer {
+    width: 100%;
+    min-height: 60vh;
+    margin-top: 40px;
+    border-bottom: 1px solid $border-color;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.cartHeader {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    h1 {
+        font-style: italic;
+        font-size: 30px;
+    }
+}
+
+.cartContent {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    width: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cartItem {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid $border-color;
+
+    .cartImg {
+        width: 150px;
+        height: auto;
+        border-radius: 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .cartItemInfo {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-left: 30px;
+        justify-content: space-around;
+
+        .cartBookName {
+            color: $text-color;
+            font-family: $font-family-georgia;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .cartAuthor {
+            color: $text-color;
+            font-family: $font-family-georgia;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .cartPrice {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+
+            .cartNewPrice {
+                color: $red-color;
+                font-size: 20px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+
+            .cartOldPrice {
+                color: #999;
+                font-size: 16px;
+                text-decoration: line-through;
+            }
+        }
+
+        .cartQuantity {
+            margin-top: 10px;
+
+            .quantity {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+
+                button {
+                    background-color: $cart-bg-color;
+                    border: none;
+                    cursor: pointer;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    color: #333;
+                    transition: $cart-transition;
+
+                    &:hover {
+                        background-color: $background-hover-color;
+                    }
+                }
+
+                .quantityNumber {
+                    margin: 0 10px;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.cartTotal {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 30px;
+    color: $red-color;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+
+    .total {
+        margin-right: 40px;
+        line-height: 40px;
+        text-align: right;
+    }
+}
+
+.buyButton {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $red-color;
+    border: none;
+    border-radius: 10px;
+    color: $white-color;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: $cart-transition;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 150px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 14px;
+
+    &:hover {
+        background-color: rgb(255, 102, 102);
+    }
+}
+
+.cartLeft {
+    width: 70%;
+    display: flex;
+}
+
+.cartRight {
+    width: 30%;
+}
+
+.whislistButton,
+.removeButton {
+    background-color: $blue-color;
+    border: none;
+    border-radius: 5px;
+    color: $white-color;
+    padding: 10px;
+    cursor: pointer;
+    transition: $cart-transition;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 150px;
+    margin-left: 10px;
+
+    &:hover {
+        background-color: $hover-blue-color;
+    }
+}
+
+.removeButton {
+    background-color: var(--remove-button);
+
+    &:hover {
+        background-color: $button-hover-color;
+    }
+}
+
+@media (max-width: 700px) {
+    .cartContent {
+        border: none;
+        margin-left: 0;
+    }
+    .cartItem {
+        flex-direction: column;
+        align-items: center;
+
+        .cartImg {
+            margin: 0; 
+            margin-bottom: 10px; 
+        }
+
+        .cartItemInfo {
+            padding: 0;
+            text-align: center;
+
+            .cartBookName {
+                font-size: 16px; 
+                text-align: center; 
+                margin-bottom: 5px; 
+            }
+
+            .cartAuthor {
+                font-size: 14px; 
+                text-align: center; 
+            }
+
+            .cartPrice {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px; 
+
+                .cartNewPrice {
+                    font-size: 16px;
+                }
+
+                .cartOldPrice {
+                    font-size: 14px; 
+                }
+            }
+
+            .cartQuantity {
+                margin-top: 10px;
+
+                .quantity {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 10px;
+
+                    button {
+                        padding: 4px 8px; 
+                        font-size: 12px; 
+                    }
+
+                    .quantityNumber {
+                        font-size: 16px;
+                        margin: 0 10px; 
+                    }
+                }
+            }
+        }
+    }
+
+    .buyButton,
+    .whislistButton,
+    .removeButton {
+        width: 100%; 
+        margin-left: 0; 
+    }
+}

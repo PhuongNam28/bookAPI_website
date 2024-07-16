@@ -1,56 +1,66 @@
-import React, { useEffect } from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
-import List from '../../Components/List/List'
-import Header from '../../Components/Header/Header'
-import Icon from '../../Components/Icon/Icon'
-import TrendingBook from '../../Components/TrendingBook/TrendingBook'
-import ComboBook from '../../Components/ComboBook/ComboBook'
-import BestSeller from '../../Components/BestSeller/BestSeller'
-import InternationalBestSeller from '../../Components/InternationalBestSeller/InternationalbestSeller'
-import NewArrival from '../../Components/NewArrival/NewArrival'
-import Poster from '../../Components/Poster/Poster'
-import Poster2 from '../../Components/Poster2/Poster2'
-import AwardWinner from '../../Components/AwardWinner/AwardWinner'
-import Footer from '../../Components/Footer/Footer'
-import LoginPage from '../LoginPage/LoginPage'
-import { auth } from '../../lib/firebase'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useUserStore } from '../../lib/userStore'
-
+import React, { useEffect } from "react";
+import Navbar from "../../Components/Navbar/index";
+import List from "../../Components/List/index";
+import Header from "../../Components/Header/index";
+import Icon from "../../Components/Icon/index";
+import TrendingBook from "../../Components/TrendingBook/TrendingBook";
+import ComboBook from "../../Components/ComboBook/index";
+import BestSeller from "../../Components/BestSeller/index";
+import InternationalBestSeller from "../../Components/InternationalBestSeller/InternationalbestSeller";
+import NewArrival from "../../Components/NewArrival/NewArrival";
+import Poster from "../../Components/Poster/Poster";
+import Poster2 from "../../Components/Poster2/Poster2";
+import AwardWinner from "../../Components/AwardWinner/index";
+import Footer from "../../Components/Footer/index";
+import LoginPage from "../LoginPage/LoginPage";
+import { auth } from "../../lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useUserStore } from "../../lib/userStore";
+import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
+import './homepage.css'
 function HomePage() {
-  const { currentUser, isLoading, fetchUserInfo } = useUserStore()
-
+  const { currentUser, isLoading, fetchUserInfo } = useUserStore();
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
-      fetchUserInfo(user?.uid)
-    })
+      fetchUserInfo(user?.uid);
+    });
     return () => {
-      unSub()
-    }
-  }, [fetchUserInfo])
+      unSub();
+    };
+  }, [fetchUserInfo]);
 
-  console.log(currentUser)
-
-  if (isLoading) return <div className='loading'>Loading...</div>
+  if (isLoading) {
+    return (
+      <div className="loading">
+         Loading, Please Wait...
+        <div className="spinner"></div>
+      </div>
+    );
+  }
   return (
-    <div className='homePage'>
-      {currentUser ? (<>
-        <Navbar />
-        <List />
-        <Header />
-        <Icon />
-        <TrendingBook />
-        <ComboBook />
-        <BestSeller />
-        <NewArrival />
-        <Poster />
-        <InternationalBestSeller />
-        <Poster2 />
-        <AwardWinner />
-        <Footer />
-      </>) : <LoginPage />}
+    <div className="homePage">
+      {currentUser ? (
+        <>
+          <Navbar />
+          <List />
+          <Header />
+          <Icon />
+          <TrendingBook />
+          <ComboBook />
+          <BestSeller />
+          <NewArrival />
+          <Poster />
+          <InternationalBestSeller />
+          <Poster2 />
+          <AwardWinner />
+          <Footer />
+          <ScrollToTopButton />
+        </>
+      ) : (
+        <LoginPage />
+      )}
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
