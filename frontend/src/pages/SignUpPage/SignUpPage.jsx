@@ -1,41 +1,43 @@
 import React, { useState } from "react";
-import "./loginpage.css";
+import "./signuppage.css";
 import { toast } from "react-toastify";
 import useAuthentication from "../../Hooks/useAuthentication";
 import Notification from "../../Components/Notification/Notification";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../lib/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../lib/firebase"; // Ensure your Firestore instance is imported here
 import { Link, useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
 
-function LoginPage() {
+function RegisterPage() {
   const { signInWithGoogle } = useAuthentication();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     console.log("Email:", email);
     console.log("Password:", password);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       console.log("User:", user);
+
+      // Save user information to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        uid: user.uid,
+        password: password
+      });
+
       navigate("/");
     } catch (error) {
-      if (error.code === 'auth/invalid-credential') {
-        toast.error("Account does not exist. Please register before logging in.");
-      } else if (error.code === 'auth/invalid-email') {
-        toast.error("Wrong Password. Please try again.");
-      } else {
-        toast.error("Login Error: Please try again.");
-      }
-      console.error("Login Error:", error);
+      console.error("Registration Error:", error);
+      toast.error("Error creating account, please try again!!!");
     }
   };
-
 
   const handleClick = async () => {
     const success = await signInWithGoogle();
@@ -48,8 +50,8 @@ function LoginPage() {
 
   return (
     <div className="loginContainer">
-      <form className="formLogin" onSubmit={handleLogin}>
-        <h1>Login</h1>
+      <form className="formLogin" onSubmit={handleRegister}>
+        <h1>Register Page</h1>
         <label>Email</label>
         <input
           className="userEmail"
@@ -67,19 +69,13 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button className="loginButton" type="submit">
-          Sign In
+          Sign Up
         </button>
         <button className="googleButton" type="button" onClick={handleClick}>
           Sign In With Google
         </button>
-        <a href="#">Forgot password?</a>
-        <div className="socialButtons">
-          <button className="facebook">F</button>
-          <button className="twitter">T</button>
-          <button className="google">G</button>
-        </div>
         <div className="signupLink">
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/login">Have an account? Log In</Link>
         </div>
       </form>
       <Notification />
@@ -87,4 +83,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

@@ -6,7 +6,7 @@ import { auth, db } from "../../lib/firebase";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { removeAllBooks } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
-import { persistor } from "../../Redux/store";
+
 import { v4 as uuidv4 } from "uuid";
 
 function ConfirmInfo() {
@@ -84,19 +84,8 @@ function ConfirmInfo() {
       };
 
       await addDoc(collection(db, "orders"), order);
-
-      const persistOperations = [
-        dispatch(removeAllBooks()),
-        persistor.pause(),
-        persistor.flush(),
-        persistor.purge(),
-      ];
-
-      await Promise.all(persistOperations);
-
-      alert("Order has been placed successfully!");
-      navigate("/");
-      window.location.reload();
+      navigate("/payment", { state: { subTotal } });
+      
     } catch (error) {
       console.error("Error adding order: ", error);
       alert("Failed to place order. Please try again.");
@@ -158,7 +147,7 @@ function ConfirmInfo() {
                 <p>Mobile: {shippingInfo.mobile}</p>
                 <p>Phone: {shippingInfo.phone}</p>
               </div>
-              <button onClick={handleConfirmOrder}>Confirm Order</button>
+              <button className="confirmButton" onClick={handleConfirmOrder}>Checkout Order</button>
             </div>
           </>
         ) : (

@@ -20,7 +20,6 @@ import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopBut
 import './homepage.css'
 function HomePage() {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
-
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       fetchUserInfo(user?.uid);
@@ -29,8 +28,6 @@ function HomePage() {
       unSub();
     };
   }, [fetchUserInfo]);
-
-  console.log(currentUser);
 
   if (isLoading) {
     return (

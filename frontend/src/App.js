@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage';
 import MyOrdersPage from './pages/MyOrdersPage/MyOrdersPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import Payment from './pages/Payment/Payment';
 
 const App = () => { 
   const routes = [
@@ -18,7 +20,9 @@ const App = () => {
     { path: "/details", element: <BookDetailsPage /> },
     { path: "/login", element: <LoginPage /> },
     { path: "/register", element: <RegisterPage /> },
-    { path: "/myorders", element: <MyOrdersPage /> }
+    { path: "/myorders", element: <MyOrdersPage /> },
+    { path: "/payment", element: <Payment /> },
+    { path: "/signup", element: <SignUpPage /> },
   ];
   return (
     <BrowserRouter>

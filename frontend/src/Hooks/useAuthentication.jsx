@@ -22,10 +22,10 @@ const useAuthentication = () => {
     }
   };
 
-  const signOut = () => {
-    auth.signOut();
+  const signOut = async () => {
     setUser(null);
-    localStorage.removeItem("gmail");
+    await localStorage.removeItem("gmail");
+    auth.signOut();
     navigate("/login");
   };
 

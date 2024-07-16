@@ -1,0 +1,55 @@
+.book-details-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .book-details-actions .quantity {
+    margin-bottom: 15px;
+  }
+  
+  .book-details-actions .quantity label {
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .book-details-actions .quantity select {
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  .book-details-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .book-details-actions .add-to-cart {
+    background-color: #4CAF50;
+  }
+  
+  .book-details-actions .add-to-cart:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  .book-details-actions .buy-now {
+    background-color: #ff9800;
+  }
+  
+  .book-details-actions .buy-now:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+  }
+  
+  .book-details-actions .add-to-wishlist {
+    background-color: #2196F3;
+  }
+  
+
+  
