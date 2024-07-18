@@ -10,11 +10,16 @@ import {
   faEnvelope,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/reading-book.png";
+import logo from "../../assets/logo.png";
 import SearchBar from "../SearchBar/SearchBar";
+import { useSelector } from "react-redux";
+import { addBookSelector } from "../../Redux/selector";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const cartBooks = useSelector(addBookSelector);
+  const cartCount = cartBooks.reduce((count, book) => count + book.quantity, 0);
+
   const handleClick = () => {
     setOpen(!open);
   };
@@ -22,13 +27,16 @@ const Navbar = () => {
   return (
     <div className="navbarContainer">
       <div className="navbarLogo">
-        <img
-          className="navbarLogo"
-          src={logo}
-          width="50px"
-          height="50px"
-          alt=""
-        />
+        <Link to={"/"}>
+          <img
+            className="navbarLogo"
+            src={logo}
+            width="80px"
+            height="75px"
+            alt=""
+          />
+        </Link>
+       
       </div>
       <SearchBar />
       <div className="user">
@@ -40,7 +48,7 @@ const Navbar = () => {
             <li>
               <FontAwesomeIcon icon={faUserCircle} /> My Profile
             </li>
-            <Link to="/myorders">
+            <Link style={{ textDecoration: "none" }} to="/myorders">
               <li>
                 <FontAwesomeIcon icon={faUser} /> My Orders
               </li>
@@ -51,7 +59,7 @@ const Navbar = () => {
             <li>
               <FontAwesomeIcon icon={faEnvelope} /> Inbox
             </li>
-            <Link to="/login">
+            <Link style={{ textDecoration: "none" }} to="/login">
               <li>
                 <FontAwesomeIcon icon={faUser} /> Login
               </li>
@@ -63,7 +71,7 @@ const Navbar = () => {
         </div>
         <Link to="/added" className="userCart">
           <FontAwesomeIcon style={{ color: "red" }} icon={faShoppingCart} />{" "}
-          Shopping cart
+          <p style={{"padding-left": "5px"}}>Shopping Cart <span className="cartCount">{cartCount}</span> </p>
         </Link>
       </div>
     </div>

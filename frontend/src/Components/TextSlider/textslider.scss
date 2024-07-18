@@ -1,0 +1,34 @@
+.text-slider {
+    width: 100%;
+    height: 50px; 
+    overflow: hidden;
+    position: relative;
+    background-color: #3E5962;
+    
+    p {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: slideText 30s linear infinite; 
+      white-space: nowrap;
+      font-size: 20px; 
+      font-weight: bold; 
+      color: white; 
+    }
+  
+    @keyframes slideText {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-200%); 
+      }
+    }
+  }
+  

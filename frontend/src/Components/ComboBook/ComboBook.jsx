@@ -2,9 +2,9 @@ import React from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import cb1 from '../../assets/ComboBook/combo1.jpg';
+import cb1 from '../../assets/ComboBook/Combo1.jpg';
 import cb2 from '../../assets/ComboBook/Combo2.jpg';
-import cb3 from '../../assets/ComboBook/combo3.jpg';
+import cb3 from '../../assets/ComboBook/Combo3.jpg';
 
 function ComboBook() {
     function SampleNextArrow(props) {
@@ -40,15 +40,15 @@ function ComboBook() {
     const comboBooks = [
         {   
             img: cb1,
-            title:'History',
+            title:'Best Tarot Card Decks',
         },
         {   
             img: cb2,
-            title:'Finance',
+            title:'Exam Central',
         },
         {   
             img: cb3,
-            title:'Life Style',
+            title:'Big Discount On Selected Product',
         },
         
     ]

@@ -35,7 +35,7 @@ function SampleNextArrow(props) {
     );
   }
 
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -51,15 +51,33 @@ function SampleNextArrow(props) {
         },
       },
       {
-        breakpoint: 1200,
+        breakpoint: 1550,
         settings: {
           slidesToShow: 4,
         },
       },
       {
-        breakpoint: 900,
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
         },
       },
       {

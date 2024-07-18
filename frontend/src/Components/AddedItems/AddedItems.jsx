@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addBookSelector } from "../../Redux/selector";
-import { removeBook, updateQuantity } from "../../Redux/actions";
+import { removeBook, updateQuantity } from "../../Redux/BookRedux/bookActions";
 import DeleteBookButton from "../DeleteBookButton/DeleteBookButton";
 
 function AddedItems() {
@@ -52,7 +52,7 @@ function AddedItems() {
       <div className="cartContent">
         {cartBooks.length === 0 ? (
           <>
-            Nothing to show at the moment. <br />
+            Nothing to show at the moment. <br /> 
             <Link to={"/"}>Click here</Link> to continue shopping
           </>
         ) : (

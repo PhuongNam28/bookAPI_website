@@ -13,6 +13,7 @@ import Poster2 from "../../Components/Poster2/Poster2";
 import AwardWinner from "../../Components/AwardWinner/index";
 import Footer from "../../Components/Footer/index";
 import LoginPage from "../LoginPage/LoginPage";
+import TextSlider from "../../Components/TextSlider/TextSlider";
 import { auth } from "../../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useUserStore } from "../../lib/userStore";
@@ -41,6 +42,7 @@ function HomePage() {
     <div className="homePage">
       {currentUser ? (
         <>
+          <TextSlider />
           <Navbar />
           <List />
           <Header />

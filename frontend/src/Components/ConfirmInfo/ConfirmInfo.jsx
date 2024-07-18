@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import "./confirminfo.scss";
 import { addBookSelector, addConfirmSelector } from "../../Redux/selector";
 import useOrderConfirmation from "../../Hooks/useOrderConfirmation";
-
+import review from "../../assets/Progress/review-progress.png"
 function ConfirmInfo() {
   const cartBooks = useSelector(addBookSelector);
   const shippingInfo = useSelector(addConfirmSelector);
@@ -14,6 +14,7 @@ function ConfirmInfo() {
       <div className="confirmInfoHeader">
         <h1>Check out your cart</h1>
       </div>
+      <img src={review} className="reviewProgress" alt="" />
       <div className="confirmInfo">
         {cartBooks.length > 0 ? (
           <>

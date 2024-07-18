@@ -3,6 +3,8 @@ import React from 'react'
 
 function Footer() {
   return (
+    <>
+    <hr className='footerHR' />
     <div className='footerContainer'>
         <div className="col">
             <p className='footerHeader'>Company</p>
@@ -31,6 +33,8 @@ function Footer() {
             <a href="#"><p>Sitemap</p></a>
         </div>
     </div>
+    </>
+    
   )
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import bestseller from '../../assets/bestseller.jpg';
-import winner from '../../assets/winner.jpg';
-import inter from '../../assets/inter.jpg';
-import boxset from '../../assets/box set.jpg';
-import newarrival from '../../assets/new arrival.jpg';
-import fiction from '../../assets/fiction book.jpg'
-import tarot from '../../assets/tarot.jpg'
-import today from '../../assets/deal.jpg'
+import bestseller from '../../assets/Icons/bestseller.jpg';
+import winner from '../../assets/Icons/winner.jpg';
+import inter from '../../assets/Icons/inter.jpg';
+import boxset from '../../assets/Icons/box set.jpg';
+import newarrival from '../../assets/Icons/new arrival.jpg';
+import fiction from '../../assets/Icons/fiction book.jpg'
+import tarot from '../../assets/Icons/tarot.jpg'
+import today from '../../assets/Icons/deal.jpg'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
