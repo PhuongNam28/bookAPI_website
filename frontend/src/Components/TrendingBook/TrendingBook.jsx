@@ -11,6 +11,10 @@ import settings from '../../Hooks/slideSetting.js';
 function TrendingBook() {
     const [show, setShow] = useState(false);
     const [item, setItem] = useState();
+    const handleSeeDetails = (book) => {
+        setShow(true);
+        setItem(book);
+      };
    
     const calculateDiscount = (oldPrice, newPrice) => {
         const discount = ((oldPrice - newPrice) / oldPrice) * 100;
@@ -27,7 +31,7 @@ function TrendingBook() {
                             <div key={book.id} className='trendingBook'>
                                 <img className='trendingbookPic' src={book.img} alt={book.title} />
                                 <div className="sale-off">{discount}%</div>
-                                <button className='seeDetails' onClick={()=>{setShow(true);setItem(book)}}>See details</button>
+                                <button className='seeDetails' onClick={() => handleSeeDetails(book)}>See details</button>
                                 <p className='bookTitle'>{book.title}</p>
                                 <p className='bookAuthor'>{book.author}</p>
                                 <div className='price'>

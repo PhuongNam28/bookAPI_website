@@ -1,53 +1,27 @@
-import React, { useState } from "react";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../lib/firebase";
-import { useOrders } from "../../Hooks/useOrders";
-import OrderDetailsModal from "../../Components/OrderDetailsModal/OrderDetailsModal";
-import DeleteBookButton from "../../Components/DeleteBookButton/DeleteBookButton";
-import "./myorders.scss";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { showToast } from "../../Components/ToastAdded/ToastNewAdded";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import OrderDetailsModal from "../../Components/OrderDetailsModal/OrderDetailsModal";
+import DeleteBookButton from "../../Components/DeleteBookButton/DeleteBookButton";
+import { useMyOrders } from "../../Hooks/useMyOrders";
+import "./myorders.scss";
 import shipping from "../../assets/Shipping/shipping.png";
 import shipping2 from "../../assets/Shipping/shipping2.jpg";
 import shipping3 from "../../assets/Shipping/shipping 3.png";
+
 function MyOrders() {
-  const { orders, loading, error, setOrders } = useOrders();
-  const [selectedOrder, setSelectedOrder] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleSeeDetails = (order) => {
-    setSelectedOrder(order);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedOrder(null);
-  };
-
-  const handleDeleteOrder = async (orderId) => {
-    try {
-      const orderRef = doc(db, "orders", orderId);
-      await deleteDoc(orderRef);
-      setOrders(orders.filter((order) => order.id !== orderId));
-    } catch (error) {
-      console.error("Error deleting order:", error);
-      showToast({
-        title: "ERROR",
-        text: "Failed to delete order.",
-        icon: "error",
-      });
-    }
-  };
-
-  const calculateDeliveryDate = (orderDate) => {
-    const orderDateObj = new Date(orderDate.seconds * 1000);
-    const deliveryDateObj = new Date(orderDateObj);
-    deliveryDateObj.setDate(orderDateObj.getDate() + 2);
-    return deliveryDateObj.toLocaleDateString();
-  };
+  const {
+    orders,
+    loading,
+    error,
+    selectedOrder,
+    isModalOpen,
+    handleSeeDetails,
+    handleCloseModal,
+    handleDeleteOrder,
+    calculateDeliveryDate,
+  } = useMyOrders();
 
   return (
     <div className="orders-container">
@@ -96,30 +70,29 @@ function MyOrders() {
                     </div>
                   </div>
                   <div className="orderDetailTotal">
-                      <div className="order-details">
-                        <div className="recipientNameMyOrder">
-                          <strong>Recipient Name:</strong>{" "}
-                          <i>{order.shippingInfo.recipientName}</i>{" "}
-                        </div>
-                        <div className="shippingMyOrder">
-                          <strong>Shipping Address:</strong>{" "}
-                          {order.shippingInfo.cityName},{" "}
-                          {order.shippingInfo.streetAddress}
-                        </div>
-                        <div className="estimatedDeliveryMyOrder">
-                          <strong style={{ color: "green" }}>
-                            Estimated Delivery:
-                          </strong>{" "}
-                          {calculateDeliveryDate(order.orderDate)}
-                        </div>
-                        <div className="totalMyOrder">
-                          <strong style={{ color: "red" }}>Total Payment:</strong> $
-                          {order.totalAmount.toFixed(2)}
-                        </div>
+                    <div className="order-details">
+                      <div className="recipientNameMyOrder">
+                        <strong>Recipient Name:</strong>{" "}
+                        <i>{order.shippingInfo.recipientName}</i>{" "}
                       </div>
-                        <img className="shippingImg3" src={shipping3} alt="" />
+                      <div className="shippingMyOrder">
+                        <strong>Shipping Address:</strong>{" "}
+                        {order.shippingInfo.cityName},{" "}
+                        {order.shippingInfo.streetAddress}
+                      </div>
+                      <div className="estimatedDeliveryMyOrder">
+                        <strong style={{ color: "green" }}>
+                          Estimated Delivery:
+                        </strong>{" "}
+                        {calculateDeliveryDate(order.orderDate)}
+                      </div>
+                      <div className="totalMyOrder">
+                        <strong style={{ color: "red" }}>Total Payment:</strong> $
+                        {order.totalAmount.toFixed(2)}
+                      </div>
+                    </div>
+                    <img className="shippingImg3" src={shipping3} alt="" />
                   </div>
-                 
                 </div>
               </li>
             ))}

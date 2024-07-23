@@ -12,6 +12,9 @@
     right: 80px;
     top: 300px;
   }
+  .goBackButton{
+    padding-right: 5px;
+  }
   
   .HistoryTable a {
     display: flex;

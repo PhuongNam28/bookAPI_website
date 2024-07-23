@@ -41,14 +41,14 @@ const Navbar = () => {
       <SearchBar />
       <div className="user">
         <div className="userAccount" onClick={handleClick}>
-          <FontAwesomeIcon style={{ color: "red" }} icon={faUser} /> My account
+          <FontAwesomeIcon className="fa-icon-navbar" icon={faUser} /> My account
         </div>
         <div className={`menu ${open ? "open" : ""}`}>
           <ul>
             <li>
               <FontAwesomeIcon icon={faUserCircle} /> My Profile
             </li>
-            <Link style={{ textDecoration: "none" }} to="/myorders">
+            <Link className="linkTo" to="/myorders">
               <li>
                 <FontAwesomeIcon icon={faUser} /> My Orders
               </li>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <li>
               <FontAwesomeIcon icon={faEnvelope} /> Inbox
             </li>
-            <Link style={{ textDecoration: "none" }} to="/login">
+            <Link className="linkTo" to="/login">
               <li>
                 <FontAwesomeIcon icon={faUser} /> Login
               </li>
@@ -70,8 +70,8 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/added" className="userCart">
-          <FontAwesomeIcon style={{ color: "red" }} icon={faShoppingCart} />{" "}
-          <p style={{"padding-left": "5px"}}>Shopping Cart <span className="cartCount">{cartCount}</span> </p>
+          <FontAwesomeIcon className="fa-icon-navbar" icon={faShoppingCart} />{" "}
+          <p> Shopping Cart <span className="cartCount">{cartCount}</span> </p>
         </Link>
       </div>
     </div>

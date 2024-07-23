@@ -10,6 +10,10 @@ import Modal from "../Modal";
 function BestSeller() {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState();
+  const handleSeeDetails = (item) => {
+    setShow(true);
+    setItem(item);
+  };
   const { data: bookData, loading, error } = useAPI("international");
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -24,7 +28,7 @@ function BestSeller() {
               <img className="bestSellerPic" src={item.volumeInfo.imageLinks?.thumbnail} alt="No pic" />
               <p className="title">{item.volumeInfo.title}</p>
               <p className="author">{item.volumeInfo.authors?.join(', ')}</p>
-              <button className='seeDetails' onClick={()=>{setShow(true);setItem(item)}}>See details</button>
+              <button className='seeDetails' onClick={() => handleSeeDetails(item)}>See details</button>
             </div>
           ))}
         </Slider>

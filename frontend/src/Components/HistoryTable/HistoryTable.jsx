@@ -10,9 +10,9 @@ function HistoryTable() {
   return (
     <div className='HistoryTable'>
       <h4 className='headerBack'>Go Back To</h4>
-        <a href="added"><FontAwesomeIcon icon={faShoppingCart} style={{"padding-right":"5px"}}/> My Cart </a>
-        <a href="shippinginfo"><FontAwesomeIcon icon={faCar} style={{"padding-right":"5px"}} /> Shipping Info</a>
-        <a href="confirm"><FontAwesomeIcon icon={faCheck} style={{"padding-right":"5px"}} />Confirmation</a>
+        <a href="added"><FontAwesomeIcon className='goBackButton' icon={faShoppingCart} /> My Cart </a>
+        <a href="shippinginfo"><FontAwesomeIcon className='goBackButton' icon={faCar} /> Shipping Info</a>
+        <a href="confirm"><FontAwesomeIcon className='goBackButton' icon={faCheck} />Confirmation</a>
     </div>
   )
 }
