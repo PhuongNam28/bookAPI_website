@@ -10,7 +10,7 @@ export const useMyOrders = () => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchOrders = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "orders"));
@@ -69,7 +69,7 @@ export const useMyOrders = () => {
     selectedOrder,
     isModalOpen,
     handleSeeDetails,
-    handleCloseModal,
+      handleCloseModal,
     handleDeleteOrder,
     calculateDeliveryDate,
   };

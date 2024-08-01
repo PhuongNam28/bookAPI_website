@@ -18,6 +18,7 @@ import { auth } from "../../lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useUserStore } from "../../lib/userStore";
 import ScrollToTopButton from "../../Components/ScrollToTopButton/ScrollToTopButton";
+
 import './homepage.css'
 function HomePage() {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();

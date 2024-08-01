@@ -39,6 +39,7 @@ const useAuth = () => {
 
   const handleGoogleClick = async () => {
     const success = await signInWithGoogle();
+    console.log(success)
     if (success) {
       navigate("/");
     } else {
