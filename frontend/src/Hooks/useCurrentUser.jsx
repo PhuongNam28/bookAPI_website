@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useUserStore } from '../lib/userStore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../lib/firebase';
+import { useUserStore } from '../lib/userStore';
 
 function useCurrentUser() {
   const { currentUser, fetchUserInfo, setCurrentUser, setLoading } = useUserStore();
@@ -9,7 +9,7 @@ function useCurrentUser() {
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       if (user) {
-        fetchUserInfo(user.uid);
+        fetchUserInfo(user.uid); 
         setCurrentUser(user);
       } else {
         setCurrentUser(null);

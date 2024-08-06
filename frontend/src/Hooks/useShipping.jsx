@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addBookSelector } from "../Redux/selector";
-import { setShippingInfo } from "../Redux/actions";
+import { setShippingInfo } from "../Redux/ShippingRedux/shippingAction";
 import * as yup from "yup";
 
 const useShipping = () => {

@@ -1,83 +1,66 @@
-import React, { useState } from "react";
+import React from "react";
 import "./loginpage.css";
-import { toast } from "react-toastify";
-import useAuthentication from "../../Hooks/useAuthentication";
+import useAuth from "../../Hooks/useAuth";
 import Notification from "../../Components/Notification/Notification";
-import { Link, useNavigate } from "react-router-dom";
-
-function LoginPage() {
-  const { signInWithEmailAndPassword, signInWithGoogle } = useAuthentication();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    console.log("Email:", email);
-    console.log("Password:", password);
-
-    try {
-      const success = await signInWithEmailAndPassword(email, password);
-      if (success) {
-        navigate("/");
-      } else {
-        toast.error("Invalid email or password. Please try again.");
-      }
-    } catch (error) {
-      console.error("Login Error:", error);
-      toast.error("Login Error: Please try again.");
-    }
-  };
-
-  const handleClick = async () => {
-    const success = await signInWithGoogle();
-    if (success) {
-      navigate("/");
-    } else {
-      toast.error("Google login failed! Please try again.");
-    }
-  };
+import Login from "@react-login-page/page10";
+import {
+  Email,
+  Password,
+  Submit,
+} from "@react-login-page/page10";
+import LoginInnerBgImg from "@react-login-page/page10/inner-bg.jpg";
+import "./loginpage.css"
+function BookLoginPage() {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleLogin,
+    handleGoogleClick,
+  } = useAuth();
 
   return (
-    <div className="loginContainer">
-      <form className="formLogin" onSubmit={handleLogin}>
-        <h1>Login</h1>
-        <label>Email</label>
-        <input
-          className="userEmail"
-          type="email"
-          placeholder="Enter user email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+    <>
+      <Login
+        onSubmit={handleLogin}
+        style={{
+          height: "100vh",
+          '--login-inner-height': '500px',
+          backgroundImage: `url("https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?cs=srgb&dl=pexels-minan1398-694740.jpg&fm=jpg")`,
+        }}
+      >
+        <Login.InnerBox
+          style={{ backgroundImage: `url(${LoginInnerBgImg})` }}
         />
-        <label>Password</label>
-        <input
-          className="userPassword"
+        <Login.InnerBox
+          panel="signup"
+          style={{ backgroundImage: `url(${LoginInnerBgImg})` }}
+        />
+        <Password
           type="password"
           placeholder="Enter user password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          name="userPassword"
+          className="passwordHolder"
         />
-        <button className="loginButton" type="submit">
-          Sign In
-        </button>
-        <button className="googleButton" type="button" onClick={handleClick}>
+        <Email
+          type="email"
+          placeholder="Enter user email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="userUserName"
+        />
+         
+        <Submit onClick={handleLogin} keyname="submit">Sign In</Submit>
+        <Submit style={{display:"inline-block"}} onClick={handleGoogleClick} keyname="google">
           Sign In With Google
-        </button>
-        <a href="#">Forgot password?</a>
-        <div className="socialButtons">
-          <button className="facebook">F</button>
-          <button className="twitter">T</button>
-          <button className="google">G</button>
-        </div>
-        <div className="signupLink">
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      </form>
+        </Submit>
+      </Login>
       <Notification />
-    </div>
+    </>
   );
 }
 
-export default LoginPage;
+export default BookLoginPage;

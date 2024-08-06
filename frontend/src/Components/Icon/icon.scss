@@ -1,6 +1,6 @@
 .iconContainer {
-    margin-top: 30px;
-    width: 100vw;
+    margin-top: 140px;
+    width: 100%;
     height: auto;
     padding: 10px;
     display: flex;
@@ -9,18 +9,23 @@
 }
 
 .icon {
+    text-align: left; 
     color: black;
-    font-size: 16px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
     font-weight: 500;
-    text-align: left;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .iconpic {
     mix-blend-mode: darken;
     width: 80px;
     height: 80px;
+    margin-bottom: 5px; 
 }
+
 
 .slick-slider {
     margin: 0 auto;

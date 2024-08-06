@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, updateQuantity } from '../../Redux/actions';
+import { addBook , updateQuantity } from "../../Redux/BookRedux/bookActions.js";
 import { v4 as uuidv4 } from 'uuid';
 import { addBookSelector } from '../../Redux/selector';
 import { useNavigate } from 'react-router-dom';
@@ -69,7 +69,7 @@ function Modal({ show, item, onClose }) {
                 <button className='overlay-close' onClick={onClose}>&times;</button>
                 <div className="inner-box">
                     <div className="inner-left">
-                        <img className='left-pic' src={item.img} alt="" />
+                        <img className='left-pic' src={item.img ? item.img : item.volumeInfo.imageLinks?.thumbnail} alt="" />
                         <div className="quantity">
                             <button className='decrease' onClick={decreaseQuantity}>-</button>
                             <div className='quantityNumber'>{quantity}</div>
@@ -83,13 +83,13 @@ function Modal({ show, item, onClose }) {
 
                     <div className="inner-right">
                         <div className="inner-price">
-                            <div className='newPrice'>${item.newPrice.toFixed(2)}</div>
-                            <div className='oldPrice'>${item.oldPrice.toFixed(2)}</div>
+                            <div className='newPrice'>${item.newPrice? item.newPrice.toFixed(2):"20.99"}</div>
+                            <div className='oldPrice'>${item.oldPrice? item.oldPrice.toFixed(2):"30.99"}</div>
                         </div>
                         <div className="inner-info">
-                            <h1 className='modalbookTitle'>{item.title}</h1>
-                            <h3 className='modalbookAuthor'>{item.author}</h3>
-                            <h4 className='modalbookDesc'>{item.description}</h4>
+                            <h1 className='modalbookTitle'>{item.title ? item.title : item.volumeInfo.title}</h1>
+                            <h3 className='modalbookAuthor'>{item.author ? item.author : item.volumeInfo.author}</h3>
+                            <h4 className='modalbookDesc'>{item.description ? item.description : item.volumeInfo.description}</h4>
                         </div>
                         <button className='viewDetails' onClick={handleDetails}>View Product Details</button>
                     </div>

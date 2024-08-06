@@ -1,7 +1,7 @@
 import React from "react";
 import "./shippinginfo.css";
 import useShipping from "../../Hooks/useShipping";
-
+import shipping from "../../assets/Progress/shipping-progress.png"
 function ShippingInfo() {
   const {
     shippingDetails,
@@ -19,6 +19,7 @@ function ShippingInfo() {
       <div className="shippingInfoHeader">
         <h1>Check out your cart</h1>
       </div>
+      <img src={shipping} className="shippingProgress" alt="" />
       <div className="shippingInfo">
         <div className="shippingInfoLeft">
           <div className="shippingInfoProgress">Shipping Address</div>

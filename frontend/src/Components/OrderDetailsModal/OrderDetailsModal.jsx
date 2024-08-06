@@ -1,6 +1,5 @@
 import React from 'react';
 import './orderdetailsmodal.scss';
-import DeleteBookButton from '../DeleteBookButton/DeleteBookButton';
 
 const OrderDetailsModal = ({ isOpen, onClose, order }) => {
   if (!isOpen) {
@@ -21,7 +20,7 @@ const OrderDetailsModal = ({ isOpen, onClose, order }) => {
                 <th>Product Name</th>
                 <th>Quantity</th>
                 <th>Unit Price</th>
-                <th>Actions</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +30,8 @@ const OrderDetailsModal = ({ isOpen, onClose, order }) => {
                   <td>{detail.quantity}</td>
                   <td>${detail.unitPrice.toFixed(2)}</td>
                   <td>
-                    <button className="action-button">See Details</button>
+                    <button className="ship-button">NotShip</button>
+                    <button className="paid-button">Paid</button>
                   </td>
                 </tr>
               ))}

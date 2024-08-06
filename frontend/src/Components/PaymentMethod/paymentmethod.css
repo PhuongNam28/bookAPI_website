@@ -1,0 +1,123 @@
+.payment-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 60vh;
+}
+  
+  .payment-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 70px;
+    animation: slideInFromTop 0.5s ease-in-out;
+  }
+  
+  .payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    animation: zoomIn 0.5s ease-in-out;
+    height: 300px;
+   
+  }
+  
+  .payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .payment-option:hover {
+    transform: translateY(-10px);
+  }
+  
+  .payment-image {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .stripe-checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stripe-checkout .StripeCheckout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .payment-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 30px;
+  }
+  
+  .cash-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .cash-button:hover {
+    background-color: #218838;
+  }
+  
+  .card-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .card-button:hover {
+    background-color: #0069d9;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

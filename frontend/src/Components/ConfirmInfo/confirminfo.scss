@@ -6,6 +6,15 @@
     padding: 0 20px;
     box-sizing: border-box;
     background-color: #f9f9f9;
+    
+    .reviewProgress{
+      display: block;
+      width: 30%;
+      height: 80px;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+    }
   }
   
   .confirmInfoHeader {
@@ -24,6 +33,7 @@
     flex-direction: column;
   
     .confirmInfoLeft {
+      position: relative;
       width:70%;
       margin-bottom: 20px;
       border: 1px solid #ddd;
@@ -202,6 +212,14 @@
     .authInfoRight {
       width: 30%;
       padding-left: 10px;
+    }
+    .reviewProgress{
+      display: block;
+      width: 90%;
+      height: 100px;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
     }
   }
   

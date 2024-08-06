@@ -1,15 +1,9 @@
-import { combineReducers } from 'redux';
-
 const initState = {
     addedBooks: []
 }
-const shippingInitState = 
-{
-    shippingInfo: {}
-}
 
-// Reducer cho addedBooks trong giỏ hàng
-const addedBooksReducer = (state = initState.addedBooks, action) => {
+
+export const addedBooksReducer = (state = initState.addedBooks, action) => {
     switch(action.type) {
         case 'BOOK/ADD_BOOK':
             return [...state, action.payload];
@@ -35,22 +29,3 @@ const addedBooksReducer = (state = initState.addedBooks, action) => {
     }
 }
 
-//Reducer shipping
-const shippingReducer = (state = shippingInitState.shippingInfo, action) => {
-    switch(action.type) {
-        case 'ADD_SHIPPING_INFO':
-            return {
-                ...state,
-                shippingInfo: action.payload
-            };
-        default:
-            return state;
-    }
-};
-const rootReducer = combineReducers({
-    addedBooks: addedBooksReducer,
-    shippings: shippingReducer
-
-});
-
-export default rootReducer;

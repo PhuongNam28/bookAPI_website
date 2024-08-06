@@ -15,7 +15,7 @@ function useOrderConfirmation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { 
     if (cartBooks.length > 0) {
       const totalQuantity = cartBooks.reduce((acc, book) => acc + book.quantity, 0);
       const subTotal = cartBooks.reduce((acc, book) => acc + book.quantity * book.newPrice, 0);

@@ -2,8 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addBookSelector } from "../../Redux/selector";
-import { removeBook, updateQuantity } from "../../Redux/actions";
+import { removeBook, updateQuantity } from "../../Redux/BookRedux/bookActions";
 import DeleteBookButton from "../DeleteBookButton/DeleteBookButton";
+
+export const calculateTotal = (cartBooks, quantities) => {
+  if (!Array.isArray(cartBooks) || cartBooks.length === 0) {
+    return 0;
+  }
+  return cartBooks.reduce((totalPrice, cartBook, index) => {
+    return totalPrice + cartBook.newPrice * quantities[index];
+  }, 0);
+};
 
 function AddedItems() {
   const dispatch = useDispatch();
@@ -14,14 +23,8 @@ function AddedItems() {
 
   const [total, setTotal] = useState(0);
 
-  const calculateTotal = () => {
-    return cartBooks.reduce((totalPrice, cartBook, index) => {
-      return totalPrice + cartBook.newPrice * quantities[index];
-    }, 0);
-  };
-
   useEffect(() => {
-    setTotal(calculateTotal());
+    setTotal(calculateTotal(cartBooks, quantities));
   }, [quantities, cartBooks]);
 
   const increaseQuantity = (index) => {
@@ -52,7 +55,7 @@ function AddedItems() {
       <div className="cartContent">
         {cartBooks.length === 0 ? (
           <>
-            Nothing to show at the moment. <br />
+            Nothing to show at the moment. <br /> 
             <Link to={"/"}>Click here</Link> to continue shopping
           </>
         ) : (

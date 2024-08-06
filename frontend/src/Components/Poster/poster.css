@@ -33,10 +33,10 @@
 }
 .posterContainer p {
     align-items: center;
-    font-weight: 800;
+    font-weight: 600;
     font-style: italic;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 32px;
+    margin-left: 10px;
+    font-size: 25px;
 }
 .bigPoster{
     width: 100%;
